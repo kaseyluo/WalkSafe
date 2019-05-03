@@ -1,0 +1,1850 @@
+(dp0
+(VAlbany Street
+p1
+VWashington Street
+p2
+tp3
+(lp4
+F40.7095053
+aF-74.0138882
+as(VBattery Pl
+p5
+VState Street
+p6
+tp7
+(lp8
+F40.7045237
+aF-74.0142449
+as(VBig Yellow C - Staten Island Ferry Terminal
+p9
+VPeter Minuit Plaza
+p10
+tp11
+(lp12
+F40.702264766666666
+aF-74.01392316666666
+as(VCarlisle Street
+p13
+VGreenwich Street
+p14
+tp15
+(lp16
+F40.7087418
+aF-74.0132592
+as(VBroadway
+p17
+VStone Street
+p18
+VWhitehall Street
+p19
+tp20
+(lp21
+F40.7040587
+aF-74.013192
+as(VLand of Misfit Toys
+p22
+VNetherlands Monument
+p23
+tp24
+(lp25
+F40.7042992
+aF-74.0146901
+as(VSpruce Street
+p26
+VWilliam Street Pedestrian Plaza
+p27
+tp28
+(lp29
+F40.710936
+aF-74.005048
+as(VGreenwich Street
+p30
+VThames Street
+p31
+tp32
+(lp33
+F40.709354
+aF-74.012992
+as(VMill Lane
+p34
+VSouth William Street
+p35
+tp36
+(lp37
+F40.704763
+aF-74.010327
+as(VCedar Street
+p38
+VGreenwich Street
+p39
+tp40
+(lp41
+F40.70971
+aF-74.012839
+as(VBeekman Street
+p42
+VPearl Street
+p43
+tp44
+(lp45
+F40.708144700000005
+aF-74.0034931
+as(VFulton Street
+p46
+VPearl Street
+p47
+VWater Street
+p48
+tp49
+(lp50
+F40.7074467
+aF-74.0040852
+as(VStatue Cruises - Special Events and Harbor Cruises
+p51
+VStatue of Liberty Ferry
+p52
+tp53
+(lp54
+F40.70287985
+aF-74.01711645
+as(VBroadway
+p55
+VCortlandt Street
+p56
+VMaiden Lane
+p57
+tp58
+(lp59
+F40.709806
+aF-74.009988
+as(VGold Street
+p60
+VSpruce Street
+p61
+tp62
+(lp63
+F40.710185
+aF-74.0042501
+as(VFletcher Street
+p64
+VWater Street
+p65
+tp66
+(lp67
+F40.706375
+aF-74.005691
+as(VBattery Pl
+p68
+VHugh L. Carey Tunnel
+p69
+tp70
+(lp71
+F40.7047836
+aF-74.0152442
+as(VFletcher Street
+p72
+VSouth Street
+p73
+tp74
+(lp75
+F40.7054111
+aF-74.0044746
+as(VPearl Street
+p76
+VSaint James Place
+p77
+tp78
+(lp79
+F40.7110335
+aF-74.0004596
+as(VJoseph P. Ward Street
+p80
+VWashington Street
+p81
+tp82
+(lp83
+F40.707428
+aF-74.0146924
+as(V2 Gold Street
+p84
+VGold Street
+p85
+tp86
+(lp87
+F40.707458
+aF-74.007151
+as(VFront Street
+p88
+VFulton Street
+p89
+tp90
+(lp91
+F40.7068569
+aF-74.00367410000001
+as(VQuinn Studio
+p92
+VSquire's Diner
+p93
+tp94
+(lp95
+F40.7086242
+aF-74.004227
+as(VFulton Street
+p96
+VNassau Street
+p97
+tp98
+(lp99
+F40.710221
+aF-74.007745
+as(VCedar Street
+p100
+VPearl Street
+p101
+tp102
+(lp103
+F40.706375
+aF-74.00713
+as(VFulton Street
+p104
+VGold Street
+p105
+tp106
+(lp107
+F40.709095
+aF-74.0054738
+as(VJoseph P. Ward Street
+p108
+VWest Street
+p109
+tp110
+(lp111
+F40.7077008
+aF-74.0155122
+as(VMill Lane
+p112
+VStone Street
+p113
+tp114
+(lp115
+F40.704546
+aF-74.01007
+as(VAlbany Plaza
+p116
+VGreenwich Street
+p117
+tp118
+(lp119
+F40.7097718
+aF-74.0130661
+as(VBeaver Street
+p120
+VHanover Street
+p121
+tp122
+(lp123
+F40.705313
+aF-74.009016
+as(VFulton Street
+p124
+VGreenwich Street
+p125
+tp126
+(lp127
+F40.7120811
+aF-74.0119706
+as(VBattery Park Underpass
+p128
+VF D R Dr
+p129
+tp130
+(lp131
+F40.7034614
+aF-74.0163147
+as(VBroad Street
+p132
+VSouth William Street
+p133
+tp134
+(lp135
+F40.704249
+aF-74.011569
+as(V2nd Place
+p136
+VBattery Pl
+p137
+tp138
+(lp139
+F40.7068323
+aF-74.0175699
+as(VBattery Pl
+p140
+VWest Thames Street
+p141
+tp142
+(lp143
+F40.708134
+aF-74.016626
+as(VFulton Street
+p144
+VWilliam Street
+p145
+tp146
+(lp147
+F40.709557
+aF-74.006435
+as(VDover Street
+p148
+VWater Street
+p149
+tp150
+(lp151
+F40.708794
+aF-74.0008601
+as(VState Street
+p152
+VState Street Plaza
+p153
+tp154
+(lp155
+F40.7023934
+aF-74.0137888
+as(V1st Place
+p156
+VBattery Pl
+p157
+tp158
+(lp159
+F40.706175
+aF-74.01793
+as(VFront Street
+p160
+VJohn Street
+p161
+tp162
+(lp163
+F40.706407
+aF-74.004558
+as(VFront Street
+p164
+VPine Street
+p165
+tp166
+(lp167
+F40.7053308
+aF-74.0062136
+as(VMiss New York Ferry
+p168
+VTable Green Kiosks
+p169
+tp170
+(lp171
+F40.7024426
+aF-74.01655835
+as(VCedar Street
+p172
+VTrinity Place
+p173
+tp174
+(lp175
+F40.709306
+aF-74.011935
+as(VBeekman Street
+p176
+VWater Street
+p177
+tp178
+(lp179
+F40.707671
+aF-74.003108
+as(VBroadway
+p180
+VLeman Manhattan Prepatory School- Upper School
+p181
+VMorris Street
+p182
+tp183
+(lp184
+F40.7058713
+aF-74.0132406
+as(VBarclay Street
+p185
+VBroadway
+p186
+tp187
+(lp188
+F40.7119926
+aF-74.0081225
+as(VBattery Pl
+p189
+VWashington Street
+p190
+tp191
+(lp192
+F40.704890899999995
+aF-74.01564400000001
+as(VJohn Street
+p193
+VPearl Street
+p194
+tp195
+(lp196
+F40.707387
+aF-74.005482
+as(VFront Street
+p197
+VOld Slip
+p198
+tp199
+(lp200
+F40.703813
+aF-74.008325
+as(VLeaping Fountain
+p201
+VMiss New York Ferry
+p202
+tp203
+(lp204
+F40.7025627
+aF-74.0166316
+as(VBattery Park City Greenway
+p205
+VPier A Harbor House
+p206
+tp207
+(lp208
+F40.70443043333333
+aF-74.018197
+as(VExchange Place
+p209
+VNew Street
+p210
+tp211
+(lp212
+F40.706552
+aF-74.011873
+as(VBroad Street
+p213
+VExchange Place
+p214
+tp215
+(lp216
+F40.706278
+aF-74.01119
+as(VBridge Street
+p217
+VBroad Street
+p218
+VPearl Street
+p219
+tp220
+(lp221
+F40.7035187
+aF-74.0115825
+as(VBeekman Street
+p222
+VFront Street
+p223
+tp224
+(lp225
+F40.707216
+aF-74.002744
+as(VHugh L. Carey Tunnel
+p226
+VKenyon & Kenyon LLP
+p227
+tp228
+(lp229
+F40.7045575
+aF-74.0151428
+as(VBroadway
+p230
+VDey Street
+p231
+tp232
+(lp233
+F40.710413
+aF-74.009474
+as(VLiving Room Bar & Terrace @ W New York - Downtown
+p234
+VWorld Center Hotel
+p235
+tp236
+(lp237
+F40.7100775
+aF-74.0133461
+as(VBroadway
+p238
+VThames Street
+p239
+tp240
+(lp241
+F40.708592
+aF-74.0110147
+as(VJohn Street
+p242
+VWater Street
+p243
+tp244
+(lp245
+F40.7068535
+aF-74.0050009
+as(VAlbany Street
+p246
+VWest Street
+p247
+tp248
+(lp249
+F40.70983075
+aF-74.0148835
+as(VLiberty Street
+p250
+VView of the World Terrace Club
+p251
+tp252
+(lp253
+F40.7102593
+aF-74.0135423
+as(VExchange Place
+p254
+VHanover Street
+p255
+tp256
+(lp257
+F40.7055418
+aF-74.0090528
+as(VBroad Street
+p258
+VSouth Street
+p259
+tp260
+(lp261
+F40.7017938
+aF-74.0111561
+as(VEdgar Street
+p262
+VGreenwich Street
+p263
+tp264
+(lp265
+F40.70711545
+aF-74.0139567
+as(VBattery Park Yoga
+p266
+VNew York Water Taxi - Battery Park
+p267
+tp268
+(lp269
+F40.7038032
+aF-74.017415
+as(VFatty Snack
+p270
+VHugh L. Carey Tunnel
+p271
+tp272
+(lp273
+F40.7019984
+aF-74.0157916
+as(VPearl Street
+p274
+VState Street
+p275
+tp276
+(lp277
+F40.7031516
+aF-74.0144384
+as(VAlbany Plaza
+p278
+VAlbany Street
+p279
+tp280
+(lp281
+F40.7098055
+aF-74.0132048
+as(VBattery Pl
+p282
+VSecret Circle at Battery Park
+p283
+tp284
+(lp285
+F40.70448605
+aF-74.0161361
+as(VPearl Street
+p286
+VPeck Slip
+p287
+tp288
+(lp289
+F40.708846
+aF-74.002503
+as(VLiberty Street
+p290
+VThe Sphere
+p291
+VWest Street
+p292
+tp293
+(lp294
+F40.71065805
+aF-74.01405655
+as(VMaiden Lane
+p295
+VWater Street
+p296
+tp297
+(lp298
+F40.706146
+aF-74.0060157
+as(VBattery Pl
+p299
+VWest Street
+p300
+tp301
+(lp302
+F40.704837633333334
+aF-74.01657656666667
+as(VWall Street
+p303
+VWater Street
+p304
+tp305
+(lp306
+F40.705183
+aF-74.007392
+as(VCarlisle Street
+p307
+VWashington Street
+p308
+tp309
+(lp310
+F40.7090879
+aF-74.0140487
+as(VHanover Street
+p311
+VRoyal Theater Cinema
+p312
+VWall Street
+p313
+tp314
+(lp315
+F40.7060194
+aF-74.0088308
+as(VGreenwich Street
+p316
+VLiberty Street
+p317
+tp318
+(lp319
+F40.710126540000005
+aF-74.01287224000001
+as(VMoore Street
+p320
+VNew York Plaza
+p321
+VWater Street
+p322
+tp323
+(lp324
+F40.7027132
+aF-74.0122117
+as(VLiberty Street
+p325
+VWilliam Street
+p326
+tp327
+(lp328
+F40.7077219
+aF-74.008269
+as(VJohn Street
+p329
+VSouth Street
+p330
+tp331
+(lp332
+F40.7057934
+aF-74.0038616
+as(VF D R Dr
+p333
+VMorris Street
+p334
+VWest Street
+p335
+tp336
+(lp337
+F40.706677
+aF-74.0159533
+as(VRector Street
+p338
+VTrinity Place
+p339
+tp340
+(lp341
+F40.7077766
+aF-74.0129583
+as(VBarclay Street
+p342
+VChurch Street
+p343
+tp344
+(lp345
+F40.7127264
+aF-74.0096747
+as(VVesey Street
+p346
+VWest Street
+p347
+tp348
+(lp349
+F40.713748949999996
+aF-74.01381015
+as(VBattery Pl
+p350
+VBroadway
+p351
+tp352
+(lp353
+F40.7046327
+aF-74.0142203
+as(VPearl Street
+p354
+VPine Street
+p355
+tp356
+(lp357
+F40.706051
+aF-74.007452
+as(VBeekman Street
+p358
+VWilliam Street
+p359
+VWilliam Street Pedestrian Plaza
+p360
+tp361
+(lp362
+F40.710397
+aF-74.005599
+as(VBroadway
+p363
+VPine Street
+p364
+tp365
+(lp366
+F40.708304
+aF-74.011248
+as(VMorris Street
+p367
+VWashington Street
+p368
+tp369
+(lp370
+F40.7064386
+aF-74.0150993
+as(VOld Slip
+p371
+VSouth Street
+p372
+tp373
+(lp374
+F40.7032662
+aF-74.00787790000001
+as(VPeck Slip
+p375
+VSouth Street
+p376
+tp377
+(lp378
+F40.7073649
+aF-74.0011702
+as(VChurch Street
+p379
+VDey Street
+p380
+tp381
+(lp382
+F40.7110079
+aF-74.0107608
+as(VOld Slip
+p383
+VWater Street
+p384
+tp385
+(lp386
+F40.704211
+aF-74.008789
+as(VGold Street
+p387
+VJohn Street
+p388
+VNY Living Solutions
+p389
+tp390
+(lp391
+F40.708227
+aF-74.006531
+as(VBroad Street
+p392
+VWall Street
+p393
+tp394
+(lp395
+F40.7071202
+aF-74.0106735
+as(VEternal Flame
+p396
+VPier A Plaza
+p397
+tp398
+(lp399
+F40.70424115
+aF-74.01744009999999
+as(VBeaver Street
+p400
+VMarketfield Street
+p401
+VNew Street
+p402
+tp403
+(lp404
+F40.7050111
+aF-74.0126271
+as(VFront Street
+p405
+VPeck Slip
+p406
+tp407
+(lp408
+F40.707817649999996
+aF-74.00157580000001
+as(VBrooklyn Battery Tunnel
+p409
+VHugh L. Carey Tunnel
+p410
+tp411
+(lp412
+F40.7052686
+aF-74.01516035
+as(VLiberty Street
+p413
+VThe Sphere
+p414
+tp415
+(lp416
+F40.71064585
+aF-74.01403525
+as(VMoore Street
+p417
+VPearl Street
+p418
+tp419
+(lp420
+F40.703207
+aF-74.01257
+as(VNew Street
+p421
+VWall Street
+p422
+tp423
+(lp424
+F40.7074957
+aF-74.011267
+as(VGowanus Expressway
+p425
+VHugh L. Carey Tunnel
+p426
+tp427
+(lp428
+F40.681832150000005
+aF-74.00563795
+as(VAnn Street
+p429
+VGold Street
+p430
+tp431
+(lp432
+F40.7094091
+aF-74.0051183
+as(VGold Street
+p433
+VRose Street
+p434
+tp435
+(lp436
+F40.710952
+aF-74.003624
+as(VGold Street
+p437
+VPlatt Street
+p438
+tp439
+(lp440
+F40.707855
+aF-74.0068357
+as(VPeck Slip
+p441
+VWater Street
+p442
+tp443
+(lp444
+F40.7082427
+aF-74.0019572
+as(VFletcher Street
+p445
+VPearl Street
+p446
+tp447
+(lp448
+F40.706993
+aF-74.0064696
+as(VLiberty Park
+p449
+VThe Sphere
+p450
+tp451
+(lp452
+F40.7104515
+aF-74.0139919
+as(VBroadway
+p453
+VCedar Street
+p454
+tp455
+(lp456
+F40.708797
+aF-74.010846
+as(VBeaver Street
+p457
+VBroadway
+p458
+tp459
+(lp460
+F40.705045
+aF-74.0133173
+as(VBroadway
+p461
+VFulton Street
+p462
+tp463
+(lp464
+F40.710887
+aF-74.009063
+as(VNew York Plaza
+p465
+VState Street Plaza
+p466
+VWhitehall Street
+p467
+tp468
+(lp469
+F40.7024415
+aF-74.0128371
+as(VMaiden Lane
+p470
+VPearl Street
+p471
+tp472
+(lp473
+F40.706724
+aF-74.006781
+as(VMaiden Lane
+p474
+VWilliam Street
+p475
+tp476
+(lp477
+F40.7079881
+aF-74.0080159
+as(VHanover Square
+p478
+VPearl Street
+p479
+VWilliam Street
+p480
+tp481
+(lp482
+F40.7045078
+aF-74.009424
+as(VPlatt Street
+p483
+VWilliam Street
+p484
+tp485
+(lp486
+F40.7083571
+aF-74.0076525
+as(VNassau Street
+p487
+VWall Street
+p488
+tp489
+(lp490
+F40.7071567
+aF-74.0107312
+as(VAmver Maritime Relations
+p491
+VHugh L. Carey Tunnel
+p492
+tp493
+(lp494
+F40.70117395
+aF-74.0150194
+as(VBroad Street
+p495
+VWater Street
+p496
+tp497
+(lp498
+F40.7029687
+aF-74.0115091
+as(VStage Door Pizza
+p499
+VWorld Trade Center Construction Security
+p500
+tp501
+(lp502
+F40.7118054
+aF-74.0101808
+as(VCedar Street
+p503
+VLiberty Park
+p504
+tp505
+(lp506
+F40.710357220000006
+aF-74.01374802000001
+as(VBrookfield Place
+p507
+VLiberty Park
+p508
+tp509
+(lp510
+F40.7103163
+aF-74.01393425
+as(VChurch Street
+p511
+VVesey Street
+p512
+tp513
+(lp514
+F40.7120904
+aF-74.0101303
+as(VImmigrants Sculpture
+p515
+VLeaping Fountain
+p516
+tp517
+(lp518
+F40.7029871
+aF-74.0164831
+as(VFulton Street
+p519
+VPearl Street
+p520
+tp521
+(lp522
+F40.707836
+aF-74.0043276
+as(VBroadway
+p523
+VRector Street
+p524
+VWall Street Physicians
+p525
+tp526
+(lp527
+F40.707452
+aF-74.011947
+as(VExchange Place
+p528
+VWilliam Street
+p529
+tp530
+(lp531
+F40.705797
+aF-74.009866
+as(VChurch Street
+p532
+VFulton Street
+p533
+tp534
+(lp535
+F40.711535
+aF-74.010465
+as(VGreenwich Street
+p536
+VRector Street
+p537
+tp538
+(lp539
+F40.7079832
+aF-74.0135999
+as(VFront Street
+p540
+VMaiden Lane
+p541
+tp542
+(lp543
+F40.705794
+aF-74.0055072
+as(VFletcher Street
+p544
+VFront Street
+p545
+tp546
+(lp547
+F40.7059869
+aF-74.0052181
+as(VMarket Slip
+p548
+VSouth Street
+p549
+tp550
+(lp551
+F40.7095182
+aF-73.9940271
+as(VBroadway
+p552
+VPark Place
+p553
+tp554
+(lp555
+F40.7125409
+aF-74.0076602
+as(VGold Street
+p556
+VLiberty Street
+p557
+VMaiden Lane
+p558
+tp559
+(lp560
+F40.707219
+aF-74.007459
+as(VBroadway
+p561
+VLiberty Street
+p562
+tp563
+(lp564
+F40.709154
+aF-74.010542
+as(VCentre Street
+p565
+VSteve Flanders Square
+p566
+tp567
+(lp568
+F40.7121302
+aF-74.0056926
+as(VChurch Street
+p569
+VLiberty Street
+p570
+VTrinity Place
+p571
+tp572
+(lp573
+F40.709687
+aF-74.011674
+as(VBattery Pl
+p574
+VF D R Dr
+p575
+tp576
+(lp577
+F40.70468535
+aF-74.01655245
+as(VAnn Street
+p578
+VNassau Street
+p579
+tp580
+(lp581
+F40.7105761
+aF-74.0073842
+as(VWall Street
+p582
+VWilliam Street
+p583
+tp584
+(lp585
+F40.706379
+aF-74.009502
+as(VMaiden Lane
+p586
+VNassau Street
+p587
+tp588
+(lp589
+F40.709044
+aF-74.008893
+as(VBattery Pl
+p590
+VNetherlands Monument
+p591
+tp592
+(lp593
+F40.7044796
+aF-74.0145928
+as(VBeekman Street
+p594
+VNassau Street
+p595
+tp596
+(lp597
+F40.711231
+aF-74.006478
+as(VAnn Street
+p598
+VBroadway
+p599
+VPark Row
+p600
+VVesey Street
+p601
+tp602
+(lp603
+F40.7113899
+aF-74.0086338
+as(VLiberty Street
+p604
+VNassau Street
+p605
+tp606
+(lp607
+F40.708614
+aF-74.009371
+as(VPike Slip
+p608
+VSouth Street
+p609
+tp610
+(lp611
+F40.7098025
+aF-73.9919815
+as(VBeekman Street
+p612
+VGold Street
+p613
+tp614
+(lp615
+F40.70966
+aF-74.004827
+as(VPearl Street
+p616
+VRobert F. Wagner Sr. Place
+p617
+tp618
+(lp619
+F40.7101245
+aF-74.00116145
+as(V3rd Place
+p620
+VLittle West Street
+p621
+tp622
+(lp623
+F40.7072151
+aF-74.0165254
+as(VHanover Square
+p624
+VOld Slip
+p625
+VWater Street
+p626
+tp627
+(lp628
+F40.7040838
+aF-74.0089636
+as(VThames Street
+p629
+VTrinity Place
+p630
+tp631
+(lp632
+F40.70903105
+aF-74.0121088
+as(VGreenwich Street
+p633
+VMorris Street
+p634
+VTrinity Place
+p635
+tp636
+(lp637
+F40.7062925
+aF-74.0143097
+as(VBroadway
+p638
+VWall Street
+p639
+tp640
+(lp641
+F40.7077665
+aF-74.011695
+as(VBeaver Street
+p642
+VPearl Street
+p643
+tp644
+(lp645
+F40.705447
+aF-74.008007
+as(VJohn Street
+p646
+VNassau Street
+p647
+tp648
+(lp649
+F40.70953
+aF-74.008418
+as(VDover Street
+p650
+VFront Street
+p651
+tp652
+(lp653
+F40.7083535
+aF-74.0004737
+as(VGreenwich Street
+p654
+VVesey Street
+p655
+tp656
+(lp657
+F40.71283785
+aF-74.01177025
+as(VPine Street
+p658
+VWilliam Street
+p659
+tp660
+(lp661
+F40.706953
+aF-74.008996
+as(VF D R Dr
+p662
+VWest Street
+p663
+tp664
+(lp665
+F40.7066286
+aF-74.0162324
+as(VBridge Street
+p666
+VWhitehall Street
+p667
+tp668
+(lp669
+F40.703588
+aF-74.013114
+as(VPearl Street
+p670
+VWhitehall Street
+p671
+tp672
+(lp673
+F40.7031174
+aF-74.0130041
+as(VSea
+p674
+VSouth Street
+p675
+tp676
+(lp677
+F40.708495
+aF-73.9993088
+as(VPine Street
+p678
+VWater Street
+p679
+tp680
+(lp681
+F40.705624
+aF-74.006766
+as(VBankers Trust Plz
+p682
+VLiving Room Bar & Terrace @ W New York - Downtown
+p683
+tp684
+(lp685
+F40.7101842
+aF-74.0130909
+as(VFulton Street
+p686
+VWater Street
+p687
+tp688
+(lp689
+F40.7072157
+aF-74.0039648
+as(VBroad Street
+p690
+VStone Street
+p691
+tp692
+(lp693
+F40.7040261
+aF-74.011576
+as(VCliff Street
+p694
+VFulton Street
+p695
+tp696
+(lp697
+F40.7084063
+aF-74.0047736
+as(VSouth Street
+p698
+VWall Street
+p699
+tp700
+(lp701
+F40.7042568
+aF-74.0062889
+as(VNassau Street
+p702
+VPine Street
+p703
+tp704
+(lp705
+F40.707694
+aF-74.010201
+as(VCoenties Slip
+p706
+VPearl Street
+p707
+tp708
+(lp709
+F40.7037097
+aF-74.0106367
+as(VWest Street
+p710
+VWest Thames Street
+p711
+tp712
+(lp713
+F40.7077457
+aF-74.0157754
+as(VBroadway
+p714
+VExchange Alley
+p715
+VExchange Place
+p716
+tp717
+(lp718
+F40.706767
+aF-74.012508
+as(VMadison Street
+p719
+VSaint James Place
+p720
+tp721
+(lp722
+F40.7117846
+aF-73.9997105
+as(VBridge Street
+p723
+VState Street
+p724
+tp725
+(lp726
+F40.7036143
+aF-74.0144036
+as(VBattery Pl
+p727
+VGreenwich Street
+p728
+tp729
+(lp730
+F40.704754566666665
+aF-74.01500773333333
+as(VCliff Street
+p731
+VJohn Street
+p732
+tp733
+(lp734
+F40.707905
+aF-74.006021
+as(VPine Street
+p735
+VSouth Street
+p736
+tp737
+(lp738
+F40.7048198
+aF-74.0054085
+as(VNassau Street
+p739
+VSpruce Street
+p740
+tp741
+(lp742
+F40.7116883
+aF-74.0058474
+as(VF D R Dr
+p743
+VWorld War II Merchant Marine Memorial Plaza
+p744
+tp745
+(lp746
+F40.702157299999996
+aF-74.0159232
+as(V1 State Street
+p747
+VState Street
+p748
+tp749
+(lp750
+F40.702493200000006
+aF-74.01430235
+as(VLeaping Fountain
+p751
+VStatue of Liberty Ferry
+p752
+tp753
+(lp754
+F40.7030105
+aF-74.0168244
+as(VBeekman Street
+p755
+VPark Row
+p756
+tp757
+(lp758
+F40.7117008
+aF-74.0069661
+as(VGouverneur Lane
+p759
+VSouth Street
+p760
+tp761
+(lp762
+F40.7037691
+aF-74.0070607
+as(VPearl Street
+p763
+VPlatt Street
+p764
+tp765
+(lp766
+F40.707205
+aF-74.005951
+as(VF D R Dr
+p767
+VLeaping Fountain
+p768
+tp769
+(lp770
+F40.70287533333333
+aF-74.01626073333334
+as(VBroadway
+p771
+VJohn Street
+p772
+tp773
+(lp774
+F40.710327
+aF-74.009543
+as(VJohn Street
+p775
+VWilliam Street
+p776
+tp777
+(lp778
+F40.7087143
+aF-74.0072883
+as(V3rd Place
+p779
+VBattery Pl
+p780
+tp781
+(lp782
+F40.7074569
+aF-74.0171175
+as(VSMITHRAIS NYC
+p783
+VWest Street
+p784
+tp785
+(lp786
+F40.7104473
+aF-74.01426000000001
+as(VChurch Street
+p787
+VCortlandt Street
+p788
+tp789
+(lp790
+F40.710369
+aF-74.0111931
+as(V1 State Street
+p791
+VPeter Minuit Plaza
+p792
+tp793
+(lp794
+F40.7022615
+aF-74.0142899
+as(VBattery Gardens Restaurant
+p795
+VHugh L. Carey Tunnel
+p796
+tp797
+(lp798
+F40.7015175
+aF-74.015421
+as(VCoenties Slip
+p799
+VWater Street
+p800
+tp801
+(lp802
+F40.7033126
+aF-74.0101658
+as(VBattery Park Playground
+p803
+VF D R Dr
+p804
+tp805
+(lp806
+F40.7015291
+aF-74.0143358
+as(VGouverneur Lane
+p807
+VWater Street
+p808
+tp809
+(lp810
+F40.704672
+aF-74.008126
+as(VF D R Dr
+p811
+VTable Green Kiosks
+p812
+tp813
+(lp814
+F40.7026054
+aF-74.0160875
+as(VFront Street
+p815
+VWall Street
+p816
+tp817
+(lp818
+F40.7048017
+aF-74.0069496
+as(VPearl Street
+p819
+VWall Street
+p820
+tp821
+(lp822
+F40.705547
+aF-74.007949
+as(VF D R Dr
+p823
+VHugh L. Carey Tunnel
+p824
+tp825
+(lp826
+F40.70202783333333
+aF-74.01546753333334
+as(VSouth End Avenue
+p827
+VWest Thames Street
+p828
+tp829
+(lp830
+F40.708457
+aF-74.017398
+as(VRobert F. Wagner Sr. Place
+p831
+VSouth Street
+p832
+tp833
+(lp834
+F40.708417
+aF-73.99921535
+as(VCarlisle Street
+p835
+VWest Street
+p836
+tp837
+(lp838
+F40.7094458
+aF-74.0148642
+as(VCedar Street
+p839
+VWilliam Street
+p840
+tp841
+(lp842
+F40.7073347
+aF-74.0086352
+as(VBankers Trust Plz
+p843
+VLiberty Street
+p844
+tp845
+(lp846
+F40.710210366666665
+aF-74.0130707
+as(VBeaver Street
+p847
+VBroad Street
+p848
+tp849
+(lp850
+F40.7049909
+aF-74.0115503
+as(VSouth Street
+p851
+VWhitehall Street
+p852
+tp853
+(lp854
+F40.7015183
+aF-74.0124663
+as(VTable Green Kiosks
+p855
+VWorld War II Merchant Marine Memorial Plaza
+p856
+tp857
+(lp858
+F40.7022375
+aF-74.0163433
+as(VBeaver Street
+p859
+VSouth William Street
+p860
+VWilliam Street
+p861
+tp862
+(lp863
+F40.705148
+aF-74.009984
+as(VEdgar Street
+p864
+VTrinity Place
+p865
+tp866
+(lp867
+F40.7069397
+aF-74.01352614999999
+as(VRector Street
+p868
+VWashington Street
+p869
+tp870
+(lp871
+F40.7082321
+aF-74.0143778
+as(VLiberty Street
+p872
+VWest Street
+p873
+tp874
+(lp875
+F40.71084055
+aF-74.0142261
+as(VMiss Ellis Island
+p876
+VTable Green Kiosks
+p877
+tp878
+(lp879
+F40.7022446
+aF-74.0164842
+as(VFront Street
+p880
+VGouverneur Lane
+p881
+tp882
+(lp883
+F40.704285
+aF-74.007671
+as(VF D R Dr
+p884
+VImmigrants Sculpture
+p885
+tp886
+(lp887
+F40.7030333
+aF-74.0162711
+as(VDover Street
+p888
+VSouth Street
+p889
+tp890
+(lp891
+F40.7079114
+aF-74.0001406
+as(VAnn Street
+p892
+VWilliam Street
+p893
+tp894
+(lp895
+F40.7099178
+aF-74.006076
+as(VAmerican Merchant Marines Memorial
+p896
+VEternal Flame
+p897
+tp898
+(lp899
+F40.7040577
+aF-74.0175918
+as(VFulton Street
+p900
+VWest Street
+p901
+tp902
+(lp903
+F40.7129155
+aF-74.0139828
+as(VFulton Street
+p904
+VSouth Street
+p905
+tp906
+(lp907
+F40.7062219
+aF-74.0031867
+as(VAlbany Street
+p908
+VGreenwich Street
+p909
+tp910
+(lp911
+F40.7091587
+aF-74.0130785
+as(VBrooklyn Bridge
+p912
+VCentre Street
+p913
+VCity Hall Park Greenway
+p914
+tp915
+(lp916
+F40.7124759
+aF-74.0048445
+as(VMaiden Lane
+p917
+VSouth Street
+p918
+tp919
+(lp920
+F40.7052372
+aF-74.0047522
+as(VBeekman Street
+p921
+VSouth Street
+p922
+tp923
+(lp924
+F40.7067145
+aF-74.0023323
+as.
