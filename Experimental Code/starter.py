@@ -6,9 +6,14 @@ import threading
 # Code that generates "surrounding" coordinates in order to probe for cross streets
 # around a given intersection coordinates.
 kMod = 0.00001
+'''
 kModifications = [
     (kMod, kMod), (kMod, -1 * kMod), (-1 * kMod, kMod), (-1 * kMod, -kMod),
     (kMod, 0), (-1 * kMod, 0), (0, kMod), (0, -1 * kMod)
+    ]
+'''
+kModifications = [
+    (kMod, kMod), (kMod, -1 * kMod), (-1 * kMod, kMod), (-1 * kMod, -1 * kMod),
     ]
 def getSurrounding(coordinate):
     surrounding = []
@@ -30,11 +35,23 @@ perfect = [
 # Function that uses the geocoder API to reverse lookup the street of a given
 # coordinate.
 def reverseLookup(coord, streets, streetsLock):
-    g = geocoder.osm(near, method='reverse')
+    g = geocoder.osm(coord, method='reverse')
     with streetsLock:
         if g.street != None:
             streets.add(g.street)
 
+# Perfect Intersection Identification Process
+streetsLock = threading.Lock()
+for coord in perfect:
+    surrounding = getSurrounding(coord)
+
+    streets = set([])
+    for near in surrounding:
+        reverseLookup(near, streets, streetsLock)
+
+    print "COORD ({}, {}) HAS THESE STREETS: {}".format(coord[0], coord[1], streets)
+
+'''
 # Perfect Intersection Identification Process
 streetsLock = threading.Lock()
 for coord in perfect:
@@ -51,7 +68,9 @@ for coord in perfect:
         thread.join()
 
     print "COORD ({}, {}) HAS THESE STREETS: {}".format(coord[0], coord[1], streets)
+'''
 
+'''
 # "Duplicate" Intersection Test Set
 duplicate = [
     [40.716871, -74.004026], [40.7167984, -74.0040877], # At least one should map to Leonard St., Broadway
@@ -105,3 +124,5 @@ for coord in incorrect:
         thread.join()
 
     print "COORD ({}, {}) HAS THESE STREETS: {}".format(coord[0], coord[1], streets)
+
+'''
