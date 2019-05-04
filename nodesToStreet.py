@@ -18,6 +18,7 @@ def constructStreetMap(intersectionToCoord):
 		# print(crossStreet)
 		# print(coord)
 		# print(" ")
+
 	return streetMap
 
 def findTwoClosest(setOfNodes, currNode): #set of nodes on a street, latLong of the currNode 
@@ -53,6 +54,7 @@ def constructNeighborsMap(intersectionToCoord, streetMap):
 			# print(streetMap[street])
 			# print("CurrNode: ", coord)
 			# print(" ")
+
 			#find two closest nodes on this street
 			node1, node2 = findTwoClosest(streetMap[street], coord)
 
@@ -64,11 +66,13 @@ def constructNeighborsMap(intersectionToCoord, streetMap):
 
 
 streetMap = constructStreetMap(intersectionToCoord)
+
 # for s in streetMap:
 # 	print(s, ": ", streetMap[s])
 neighborMap = constructNeighborsMap(intersectionToCoord, streetMap)
 # for n in neighborMap:
 # 	print(n, ": ", neighborMap[n])
+
 
 s = open("streetMap.pickle", "wb")
 pickle.dump(streetMap, s)
