@@ -12,6 +12,8 @@ csvLatLongIndex = 29
 FELONY = "FELONY"
 CRIMEFILE = "crimeData.json"
 
+sampleDataLineCount = 367629
+
 # felonies = {
 # 		"FELONY ASSAULT" : 106,
 # 		"ROBBERY" : 105,
@@ -85,9 +87,12 @@ def getCrimes():
 	f = open("NYPD_Complaint_Data_Historic.csv")
 	csv_f = csv.reader(f)
 	first_row = next(csv_f)
+	numRowsReached = 0
 	for row in csv_f:
+		if numRowsReached > sampleDataLineCount: break #THIS ONLY TAKES 2017 and bits of 2016 DATA!!
 		c = Crime(row[csvLatLongIndex], row[csvCrimePDCodeIndex], row[csvCrimeKDCodeIndex], row[csvCrimeLAWCATCD], row[csvCrimeTimeIndex])
 		crimes.add(c)
+		numRowsReached += 1
 
 	return crimes
 
