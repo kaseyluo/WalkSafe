@@ -94,19 +94,31 @@ def baselineGreedy(startNode, endNode, neighborsMap): #TODO, write this
 	path = []
 	currNode = startNode
 	while(currNode != endNode):
+		print(coordToIntersection[currNode])
 		#explore neighbors of the currNode
 		neighbors = neighborsMap[currNode]
 
-		currWeight = 1000000000 #TODO, make this max
+		currWeight = float('inf') #TODO, make this max
+		bestNeighbor = currNode
 		for n in neighbors:
 			edge = (currNode, n)
-			if edge not in edgeToCrimeWeight: edge = (n, currNode) #try both orders of edges
+			if edge not in edgeToCrimeWeight: 
+				edge = (n, currNode) #try both orders of edges
+				#ASK are we garuenteed there is an edge?
 
-			
+			if getCost(edge[0], edge[1]) < currWeight:
+				bestNeighbor = n
+				currWeight = getCost(edge[0], edge[1])
+
+		path.append(bestNeighbor)
+		currNode = bestNeighbor
+				
 
 		#choose the neighbor with the smallest weight
 		#add this neighbor to path
-
+	print("Gready Path: ")
+	for p in path:
+		print(coordToIntersection[p])
 	return path
 
 def findUCSPath(startNode, endNode, getCost):
@@ -162,6 +174,11 @@ def run():
 	actionsAStar = findAStarPath(startNode, endNode, getCost)
 	endTimeAStar = time.time()
 	print("Time to run A*: ", endTimeAStar - startTimeAStar)
+
+	startTimeGreedy = time.time()
+	actionsGreedy = baselineGreedy(startNode, endNode, neighborsMap)
+	endTimeGreedy = time.time()
+	print("Time to run Greedy: ", endTimeGreedy - startTimeGreedy)
 
 run()
 
