@@ -62,6 +62,9 @@ def baselineGreedy(startNode, endNode, neighborsMap): #TODO, write this
 	weight = 0
 	path = []
 	currNode = startNode
+	visited = {}
+	visited.add(startNode)
+
 	while(currNode != endNode):
 		#explore neighbors of the currNode
 		neighbors = neighborsMap[currNode]
@@ -69,16 +72,20 @@ def baselineGreedy(startNode, endNode, neighborsMap): #TODO, write this
 		currWeight = float('inf') #TODO, make this max
 		bestNeighbor = currNode
 		for n in neighbors:
-			edge = (currNode, n)
-			if edge not in edgeToCrimeWeight: 
-				edge = (n, currNode) #try both orders of edges
-				#ASK are we garuenteed there is an edge?
+			if n not in visited:
+				edge = (currNode, n)
+				if edge not in edgeToCrimeWeight: 
+					edge = (n, currNode) #try both orders of edges
+					#ASK are we garuenteed there is an edge?
 
-			if getCost(edge[0], edge[1]) < currWeight:
-				bestNeighbor = n
-				currWeight = getCost(edge[0], edge[1])
-
+				if getCost(edge[0], edge[1]) < currWeight:
+					bestNeighbor = n
+					currWeight = getCost(edge[0], edge[1])
+		if bestNeighbor == currNode:
+			return "Sorry explored everything"
+			
 		path.append(bestNeighbor)
+		visited.add(bestNeighbor)
 		currNode = bestNeighbor
 				
 
