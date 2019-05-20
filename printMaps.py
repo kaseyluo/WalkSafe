@@ -11,6 +11,13 @@ def printEdgeToCrimeWeight():
 	for f in edgeToCrimeWeight:
 		print(f, ": ", edgeToCrimeWeight[f])
 
+def printNeighborsMaps():
+	n_new = open("neighborMap.pickle", "rb")
+	nmap = pickle.load(n_new)
+	for f in nmap:
+		print(f, ": ", nmap[f])
+
 
 printCrossStreetsToCoord()
+# printNeighborsMaps()
 # printEdgeToCrimeWeight()
