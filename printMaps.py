@@ -5,7 +5,12 @@ def printCrossStreetsToCoord():
 	for f in intersectionToCoordMap:
 		print(f, ": ", intersectionToCoordMap[f])
 
-
+def printEdgeToCrimeWeight():
+	e_new = open("edgeToCrimeWeight.pickle", "rb")
+	edgeToCrimeWeight = pickle.load(e_new)
+	for f in edgeToCrimeWeight:
+		print(f, ": ", edgeToCrimeWeight[f])
 
 
 printCrossStreetsToCoord()
+# printEdgeToCrimeWeight()
