@@ -50,32 +50,6 @@ class ShortestPathProblem(util.SearchProblem):
         	results.append(t)
         return results
 
-class AStarShortestPathProblem(util.SearchProblem):
-    def __init__(self, startNode, endNode, moveCost, neighborsMap):
-        self.startNode = startNode
-        self.endNode = endNode
-        self.moveCost = moveCost
-        self.neighborsMap = neighborsMap
-
-    def startState(self):
-        start = self.startNode
-        return start
-
-    def isEnd(self, state):
-        return state == self.endNode
-
-    def succAndCost(self, state):
-        results = []
-        currNode = state
-        intersection = coordToIntersection[currNode] #returns a latitude longitude
-        neighbors = self.neighborsMap[intersection] #a set of neighbor nodes to the current node
-        for n in neighbors:
-        	if n == None: continue #TODO, FIX THIS
-        	cost = self.moveCost(currNode, n) + distance.distance(n, self.endNode).m
-        	t = (n, n, cost)
-        	results.append(t)
-        return results
-
 def getCost(startNode, endNode):
 	edge = (startNode, endNode)
 	crimeWeightAtIntersection = 0
@@ -99,22 +73,17 @@ def baselineGreedy(startNode, endNode, neighborsMap): #TODO, write this
 	cost = 0
 
 	while(currNode != endNode):
-		# print("currNode: ", currNode)
-		# print("currNode: ", coordToIntersection[currNode])
 		#explore neighbors of the currNode
 		neighbors = neighborsMap[coordToIntersection[currNode]]
 		currWeight = float('inf') #TODO, make this max
 		bestNeighbor = currNode
 		for n in neighbors:
 			if n == None: continue #TODO, FIX THIS
-			# print("n: ", coordToIntersection[n])
-			# print("in for loop")
 			if n not in visited:
 				edge = (currNode, n)
 				if edge not in edgeToCrimeWeight: 
 					edge = (n, currNode) #try both orders of edges
 					#ASK are we garuenteed there is an edge?
-
 				if getCost(edge[0], edge[1]) < currWeight:
 					bestNeighbor = n
 					currWeight = getCost(edge[0], edge[1])
@@ -150,8 +119,8 @@ def findUCSPath(startNode, endNode, getCost):
 
 def findAStarPath(startNode, endNode, getCost):
 	#get neighborNodes map
-	ucs = util.UniformCostSearch(verbose=0)
-	ucs.solve(AStarShortestPathProblem(startNode, endNode, getCost, neighborsMap))
+	ucs = util.AStarSearch(verbose=0)
+	ucs.solve(ShortestPathProblem(startNode, endNode, getCost, neighborsMap), endNode)
 	actions = ucs.actions
 	print("Safest, shortest path, A*: ")
 	print(coordToIntersection[startNode])
