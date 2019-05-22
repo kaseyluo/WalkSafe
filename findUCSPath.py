@@ -2,6 +2,7 @@ import util
 import sys
 import pickle
 import time
+import crimeWeightToIntersectionV2
 from nodesToStreet import intersectionToCoord
 from geopy import distance
 from computeAverages import aveIntersectionWeight, aveEdgeToCrimeWeight
@@ -24,6 +25,10 @@ coordToIntersection = pickle.load(c_new)
 #get neighbors map
 n_new = open("neighborMap.pickle", "rb")
 neighborsMap = pickle.load(n_new)
+
+#get neighbors map
+s_new = open("intersectionToCrimeWeightV2.pickle", "rb")
+intersectionToCrimeWeightV2 = pickle.load(s_new)
 
 
 
@@ -55,7 +60,7 @@ class ShortestPathProblem(util.SearchProblem):
         	results.append(t)
         return results
 
-def getCost(startNode, endNode, alpha, beta, normalize=True):
+def getCost(startNode, endNode, alpha, beta, normalize=True, useSecondaryWeights=True):
 	edge = tuple(sorted(list((startNode, endNode))))
 	crimeWeightAtIntersection = 0
 	if endNode in intersectionToCrimeWeight:
@@ -64,7 +69,9 @@ def getCost(startNode, endNode, alpha, beta, normalize=True):
 	#cost = crime at edge, crime at endNode if any, + distance from start to end
 	# print("cimre: ", edgeToCrimeWeight[edge] + crimeWeightAtIntersection, "dist: ", distance.distance(startNode, endNode).m)
 	if normalize:
-		return alpha*(edgeToCrimeWeight[edge]/aveEdgeToCrimeWeight + crimeWeightAtIntersection/aveIntersectionWeight) + beta*(distance.distance(startNode, endNode).m/averageBlockInMeters)
+		if not useSecondaryWeights: return alpha*(edgeToCrimeWeight[edge]/aveEdgeToCrimeWeight + crimeWeightAtIntersection/aveIntersectionWeight) + beta*(distance.distance(startNode, endNode).m/averageBlockInMeters)
+		else:
+			return alpha*intersectionToCrimeWeightV2[endNode]/aveIntersectionWeightV2 + beta*(distance.distance(startNode, endNode).m/averageBlockInMeters)
 	return edgeToCrimeWeight[edge] + crimeWeightAtIntersection + distance.distance(startNode, endNode).m
 
 # the distance between the inputted start and end node
