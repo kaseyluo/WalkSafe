@@ -22,9 +22,15 @@ file2.close()
 
 # Opens the mapping from intersection coordinate (key) to intersection cross
 # streets (value).
+file3 = open("intersectionToCrossStreets_financialDistrict.pickle", "rb")
+intersectionToCrossStreets = pickle.load(file3)
+file3.close()
 
 # Opens the mapping from an intersection cross street to its neighboring
 # intersection coordinates.
+file4 = open("neighborMap.pickle", "rb")
+neighborMap = pickle.laod(file4)
+file4.close()
 
 def assignCrimeToLocation(crimeMap):
 	intersectionWeights = defaultdict(float)
