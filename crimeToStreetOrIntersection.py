@@ -15,17 +15,17 @@ import sys
 DIST_TO_INTERSECTION = 5 
 
 #Variables for using the mapBox API
-REQUEST_LIMIT = 40000
-KEY1 = "pk.eyJ1IjoibGlsYm9hdDU0MjMiLCJhIjoiY2p2OGd1Nm45MHFrMDRkbzVpNmg1cmRiMSJ9.4D_A69BaEt2JiOalwYiyhQ"
-KEY2 = "pk.eyJ1IjoiYmxhaGJsYWhibGFoMTIzNCIsImEiOiJjanY4ajRkNGwwaW10NDVudHNzNjA2cHZnIn0.JTf6OMcGDF7P4EakSTylwQ"
-KEY3 = "pk.eyJ1Ijoib3JnYW55YXkiLCJhIjoiY2p2OHMwdWpmMGVnOTQzbzR2dG1xdmh4aiJ9.nn1_EPX7rj6zvOR0MIC7fA"
+REQUEST_LIMIT = 30000
+KEY1 = "pk.eyJ1IjoiYWphamFqYWoiLCJhIjoiY2p2eXdiNG5vMDdrOTQ2bGN0YjZqMm5pdSJ9.DjmakmkyZbIY-AKxd9sq5Q"
+KEY2 = "pk.eyJ1Ijoic3V0dHRlciIsImEiOiJjanZ5d2NlbjYwa2U5NDl0ODJrZmQ5d2x4In0.DLIHuaZiV0rWZYoWQKBwbw"
+KEY3 = "pk.eyJ1IjoiYnVla2pyIiwiYSI6ImNqdnl3ZHJuaDBrYW80NG1pNTBxOXF5czIifQ.zI0GRc3dQwwwPmzDPLR0Pw"
 
 
 #Reading in the streetMap dictionary, maps street to all intersections on the street
 f_new = open("streetMap.pickle", "rb")
 streetMap = pickle.load(f_new)
-
 with open("crimeData.json", 'r') as f:
+# with open("crimeDataMiniMini.json", 'r') as f:
     crimeMap = json.load(f)
 print(len(crimeMap))
 
@@ -34,6 +34,7 @@ print(len(crimeMap))
 def getStreet(latLong, key):
 	g = geocoder.mapbox(latLong, method="reverse", key=key)
 	g_json = g.json
+	if g_json == None: return
 	if 'raw' not in g_json: return
 	if 'text' not in g_json['raw']: return
 	# if 'raw' in g_json and 'text' in g_json['raw']:
@@ -74,8 +75,10 @@ def assignCrimeToLocation(crimeMap):
 				break
 		if not assigned:
 			node1, node2 = findTwoClosest(intersections, eval(latLong))
+			if node1 == None or node2 == None: continue
 			edge = (node1, node2)
-			edge = tuple(list(edge).sort())
+			# print(type(edge))
+			edge = tuple(sorted(list(edge)))
 			edgeWeights[edge] += crimeWeight
 		numReqs += 1
 	return intersectionWeights, edgeWeights
@@ -86,11 +89,11 @@ intersectionWeights, edgeWeights = assignCrimeToLocation(crimeMap)
 
 print("LENGHT INTERSECTION WEIGHTS: ", len(intersectionWeights))
 print("LENGHT edgeWeights : ", len(edgeWeights))
-# print("PRINTING MAP: ")
-# for s in intersectionWeights:
-# 	print(s, ": ", intersectionWeights[s])
-# for n in edgeWeights:
-# 	print(n, ": ", edgeWeights[n])
+print("PRINTING MAP: ")
+for s in intersectionWeights:
+	print(s, ": ", intersectionWeights[s])
+for n in edgeWeights:
+	print(n, ": ", edgeWeights[n])
 
 #LENGHT INTERSECTION WEIGHTS:  33
 #LENGHT edgeWeights :  212

@@ -22,9 +22,9 @@ def constructStreetMap(intersectionToCoord):
 	return streetMap
 
 def findTwoClosest(setOfNodes, currNode): #set of nodes on a street, latLong of the currNode 
-	minimum = 1000000
+	minimum = sys.maxsize
 	node1 = None
-	nextMin = 1000000
+	nextMin = sys.maxsize
 	node2 = None
 	currNode = tuple(currNode)
 	for coord in setOfNodes:
@@ -43,6 +43,7 @@ def findTwoClosest(setOfNodes, currNode): #set of nodes on a street, latLong of 
 			elif distFromCurrToCoord < nextMin:
 				nextMin = distFromCurrToCoord
 				node2 = coord
+	# print(node1, node2)
 	return node1, node2
 
 
