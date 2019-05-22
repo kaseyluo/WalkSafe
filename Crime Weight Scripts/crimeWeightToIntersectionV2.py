@@ -22,43 +22,15 @@ file2.close()
 
 # Opens the mapping from intersection coordinate (key) to intersection cross
 # streets (value).
+file3 = open("intersectionToCrossStreets_financialDistrict.pickle", "rb")
+intersectionToCrossStreets = pickle.load(file3)
+file3.close()
 
 # Opens the mapping from an intersection cross street to its neighboring
 # intersection coordinates.
-
-def assignCrimeToLocation(crimeMap):
-	intersectionWeights = defaultdict(float)
-	edgeWeights = defaultdict(float)
-	numReqs = 0
-	for latLong in crimeMap:
-		street = ""
-		print(numReqs)
-		if numReqs <= REQUEST_LIMIT:
-			# print(latLong)
-			street = getStreet(latLong, KEY1)
-		elif numReqs <= 2*REQUEST_LIMIT:
-			street = getStreet(latLong, KEY2)
-		elif numReqs <= 3*REQUEST_LIMIT:
-			street = getStreet(latLong, KEY3)
-
-		crimeWeight = crimeMap[latLong]
-		if street not in streetMap:
-			# print("NOT IN STREET MAP {}".format(street))
-			numReqs += 1
-			continue
-		intersections = streetMap[street]
-
-
-		for i in intersections:
-			distFromCrimeToNode = distance.distance(eval(latLong), i).m
-			if distFromCrimeToNode < DIST_TO_INTERSECTION: #if within DIST_TO_INTERSECTION to an intersection
-				intersectionWeights[latLong] += crimeWeight
-			else:
-				node1, node2 = findTwoClosest(intersections, eval(latLong))
-				edge = (node1, node2)
-				edgeWeights[edge] += crimeWeight
-		numReqs += 1
-	return intersectionWeights, edgeWeights
+file4 = open("neighborMap.pickle", "rb")
+neighborMap = pickle.laod(file4)
+file4.close()
 
 def computeCrimeWeightV2(intersectionCoord, intersectionWeights, edgeWeights):
     crossStreets = intersectionToCrossStreets[intersectionCoord]
@@ -112,7 +84,7 @@ def assignCrimeWeightToIntersection(intersectionWeights, edgeWeights):
     return intersectionWeightsV2
 
 
-intersectionWeightsV2 = assignCrimeToLocation(intersectionWeightsV1, edgeWeightsV1)
+intersectionWeightsV2 = assignCrimeWeightToIntersection(intersectionWeightsV1, edgeWeightsV1)
 
 s = open("intersectionToCrimeWeightV2.pickle", "wb")
 pickle.dump(intersectionWeightsV2, s)
