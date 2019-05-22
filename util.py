@@ -2,6 +2,8 @@
 import heapq, collections, re, sys, time, os, random
 from geopy import distance
 
+averageBlockInMeters = 177.
+
 ############################################################
 # Abstract interfaces for search problems and search algorithms.
 
@@ -91,7 +93,7 @@ class AStarSearch(SearchAlgorithm):
     def __init__(self, verbose=0):
         self.verbose = verbose
 
-    def solve(self, problem, destination):
+    def solve(self, problem, destination, beta):
         # If a path exists, set |actions| and |totalCost| accordingly.
         # Otherwise, leave them as None.
         self.actions = None
@@ -140,7 +142,8 @@ class AStarSearch(SearchAlgorithm):
             for action, newState, cost in problem.succAndCost(state):
                 if self.verbose >= 3:
                     print( "  Action %s => %s with cost %s + %s" % (action, newState, pastCost, cost))
-                if frontier.update(newState, (distance.distance(newState, destination).m + pastCost + cost, pastCost + cost)):
+                # where distance.distance(newState, destination).m  is the heuristic
+                if frontier.update(newState, (beta*distance.distance(newState, destination).m/averageBlockInMeters + pastCost + cost, pastCost + cost)):
                     # Found better way to go to |newState|, update backpointer.
                     backpointers[newState] = (action, state)
         if self.verbose >= 1:

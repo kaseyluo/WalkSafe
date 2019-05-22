@@ -52,7 +52,6 @@ def assignCrimeToLocation(crimeMap):
 		street = ""
 		print(numReqs)
 		if numReqs <= REQUEST_LIMIT:
-			# print(latLong)
 			street = getStreet(latLong, KEY1)
 		elif numReqs <= 2*REQUEST_LIMIT:
 			street = getStreet(latLong, KEY2)
@@ -66,19 +65,25 @@ def assignCrimeToLocation(crimeMap):
 			continue
 		intersections = streetMap[street]
 
-		
+		assigned = False
 		for i in intersections:
 			distFromCrimeToNode = distance.distance(eval(latLong), i).m
 			if distFromCrimeToNode < DIST_TO_INTERSECTION: #if within DIST_TO_INTERSECTION to an intersection
 				intersectionWeights[latLong] += crimeWeight
-			else:
-				node1, node2 = findTwoClosest(intersections, eval(latLong))
-				edge = (node1, node2)
-				edgeWeights[edge] += crimeWeight
+				assigned = True
+				break
+		if not assigned:
+			node1, node2 = findTwoClosest(intersections, eval(latLong))
+			edge = (node1, node2)
+			edge = tuple(list(edge).sort())
+			edgeWeights[edge] += crimeWeight
 		numReqs += 1
 	return intersectionWeights, edgeWeights
 
 intersectionWeights, edgeWeights = assignCrimeToLocation(crimeMap)
+
+
+
 print("LENGHT INTERSECTION WEIGHTS: ", len(intersectionWeights))
 print("LENGHT edgeWeights : ", len(edgeWeights))
 # print("PRINTING MAP: ")
