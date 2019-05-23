@@ -29,7 +29,7 @@ file3.close()
 # Opens the mapping from an intersection cross street to its neighboring
 # intersection coordinates.
 file4 = open("neighborMap.pickle", "rb")
-neighborMap = pickle.laod(file4)
+neighborMap = pickle.load(file4)
 file4.close()
 
 def computeCrimeWeightV2(intersectionCoord, intersectionWeights, edgeWeights):
