@@ -15,6 +15,7 @@ def computeAverageValue(dictionary):
 	totalWeight = 0
 	for i in dictionary:
 		totalWeight += dictionary[i]
+	print("weight: ", totalWeight, "len: ", len(dictionary))
 	return float(totalWeight)/len(dictionary)
 
 aveIntersectionWeight = computeAverageValue(intersectionWeights)

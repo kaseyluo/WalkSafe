@@ -2,10 +2,9 @@ import util
 import sys
 import pickle
 import time
-import crimeWeightToIntersectionV2
 from nodesToStreet import intersectionToCoord
 from geopy import distance
-from computeAverages import aveIntersectionWeight, aveEdgeToCrimeWeight
+from computeAverages import aveIntersectionWeight, aveEdgeToCrimeWeight, aveIntersectionWeightV2
 
 averageBlockInMeters = 177.
 
