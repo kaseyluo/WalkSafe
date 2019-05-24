@@ -12,5 +12,6 @@ def printEdgeToCrimeWeight():
 		print(f, ": ", edgeToCrimeWeight[f])
 
 
+
 printCrossStreetsToCoord()
 # printEdgeToCrimeWeight()
