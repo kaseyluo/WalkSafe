@@ -81,7 +81,6 @@ def computeCrimeWeightV2Helper(currCoord, originCoord, visited, intersectionWeig
 # that is computed according to the formula described in computeCrimeWeightV2.
 def assignCrimeWeightToIntersection(intersectionWeights, edgeWeights):
     intersectionWeightsV2 = defaultdict(float)
-    print("in assignCrimeWeightToIntersection")
     for intersection, weightV1 in intersectionWeights.items():
         weightV2 = computeCrimeWeightV2(intersection, intersectionWeights, edgeWeights)
         intersectionWeightsV2[intersection] = weightV2

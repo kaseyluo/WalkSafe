@@ -1,5 +1,8 @@
 #THIS IS A HELPER DOC THAT WAS TAKEN FROM THE CS221 CODEBASE
 import heapq, collections, re, sys, time, os, random
+from geopy import distance
+
+averageBlockInMeters = 177.
 
 ############################################################
 # Abstract interfaces for search problems and search algorithms.
@@ -84,6 +87,68 @@ class UniformCostSearch(SearchAlgorithm):
         if self.verbose >= 1:
             print("No path found")
 
+# Uniform cost search algorithm (Dijkstra's algorithm).
+
+class AStarSearch(SearchAlgorithm):
+    def __init__(self, verbose=0):
+        self.verbose = verbose
+
+    def solve(self, problem, destination, beta):
+        # If a path exists, set |actions| and |totalCost| accordingly.
+        # Otherwise, leave them as None.
+        self.actions = None
+        self.totalCost = None
+        self.numStatesExplored = 0
+
+        # Initialize data structures
+        frontier = PriorityQueueAStar()  # Explored states are maintained by the frontier.
+        backpointers = {}  # map state to (action, previous state)
+
+        # Add the start state
+        startState = problem.startState()
+        frontier.update(startState, (0, 0))
+        # print(frontier)
+
+        while True:
+            # Remove the state from the queue with the lowest pastCost
+            # (priority).
+            state, val = frontier.removeMin()
+            pastCost = val[1]
+            prior = val[0]
+            if state == None: break
+            self.numStatesExplored += 1
+            if self.verbose >= 2:
+                print("Exploring %s with pastCost %s, priority %s" % (state, pastCost, prior))
+
+            # Check if we've reached an end state; if so, extract solution.
+            if problem.isEnd(state):
+                # print("REACHINED THE END")
+                self.actions = []
+                while state != startState:
+                    action, prevState = backpointers[state]
+                    self.actions.append(action)
+                    state = prevState
+                self.actions.reverse()
+                self.totalCost = pastCost
+                if self.verbose >= 1:
+                    print("numStatesExplored = %d" % self.numStatesExplored)
+                    print ("totalCost = %s" % self.totalCost)
+                    print ("actions = %s" % self.actions)
+                # print(self.actions)
+                return
+
+            # Expand from |state| to new successor states,
+            # updating the frontier with each newState.
+            for action, newState, cost in problem.succAndCost(state):
+                if self.verbose >= 3:
+                    print( "  Action %s => %s with cost %s + %s" % (action, newState, pastCost, cost))
+                # where distance.distance(newState, destination).m  is the heuristic
+                if frontier.update(newState, (beta*distance.distance(newState, destination).m/averageBlockInMeters + pastCost + cost, pastCost + cost)):
+                    # Found better way to go to |newState|, update backpointer.
+                    backpointers[newState] = (action, state)
+        if self.verbose >= 1:
+            print("No path found")
+
 # Data structure for supporting uniform cost search.
 class PriorityQueue:
     def  __init__(self):
@@ -111,6 +176,40 @@ class PriorityQueue:
             if self.priorities[state] == self.DONE: continue  # Outdated priority, skip
             self.priorities[state] = self.DONE
             return (state, priority)
+        return (None, None) # Nothing left...
+
+# Data structure for supporting uniform cost search.
+class PriorityQueueAStar:
+    def  __init__(self):
+        self.DONE = -100000
+        self.heap = []
+        self.priorities = {}  # Map from state to priority, key: state, value: (priority, cost)
+
+    # Insert |state| into the heap with priority |newPriority| if
+    # |state| isn't in the heap or |newPriority| is smaller than the existing
+    # priority.
+    # Return whether the priority queue was updated.
+    def update(self, state, val):
+        newPriority = val[0]
+        cost = val[1]
+        oldVal = self.priorities.get(state)
+        oldPriority = sys.maxsize
+        if oldVal != None: oldPriority = self.priorities.get(state)[0]
+        if oldPriority == None or newPriority < oldPriority:
+            self.priorities[state] = (newPriority, cost)
+            heapq.heappush(self.heap, ((newPriority, cost), state))
+            return True
+        return False
+
+    # Returns (state with minimum priority, cost)
+    # or (None, None) if the priority queue is empty.
+    def removeMin(self):
+        while len(self.heap) > 0:
+            val, state = heapq.heappop(self.heap)
+            if self.priorities[state][0] == self.DONE: continue  # Outdated priority, skip
+            list(self.priorities[state])[0]= self.DONE
+            self.priorities[state] = tuple(self.priorities[state])
+            return (state, val)
         return (None, None) # Nothing left...
 
 ############################################################

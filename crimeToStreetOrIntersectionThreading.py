@@ -1,4 +1,5 @@
-from multiprocessing.dummy import Pool as ThreadPool
+from multiprocessing.pool import ThreadPool
+from threading import Lock
 from collections import defaultdict
 from geopy import distance
 from nodesToStreet import findTwoClosest
@@ -16,9 +17,9 @@ DIST_TO_INTERSECTION = 5
 
 #Variables for using the mapBox API
 REQUEST_LIMIT = 30000
-KEY1 = "pk.eyJ1IjoiY2FwcmljbGtqIiwiYSI6ImNqdnp3bHEybjA0d2E0M29kYWE4M3licDgifQ.VgHZVbHVY0UdodH0d2rM3Q"
-KEY2 = "pk.eyJ1IjoiYWxzamZqIiwiYSI6ImNqdnp3bXY5YTA0eTE0YXBrNHk4ODh5NmUifQ.OPssP2ssEdKjp2O5mMMfMw"
-KEY3 = "pk.eyJ1IjoiYnVla2pyIiwiYSI6ImNqdnl3ZHJuaDBrYW80NG1pNTBxOXF5czIifQ.zI0GRc3dQwwwPmzDPLR0Pw"
+KEY1 = "pk.eyJ1IjoiZG9tY2xraiIsImEiOiJjanZ6eHl1d24wNWI1NDNrc2VhbnlwMmZqIn0.jcTRih4pVQfdJe0Nk2dXng"
+KEY2 = "pk.eyJ1IjoiYXNkZmpsa2oiLCJhIjoiY2p2enkwNjBtMDVlMjQ5bGtram13YTZvbCJ9.UpRITNCLTaG3OyqF9D_6pQ"
+KEY3 = "pk.eyJ1IjoibGFrc2pkZmxraiIsImEiOiJjanZ6eTE2OWwwNWN0NDlwZzd4aW5kNXVwIn0.XlB6igH6svRjyYt92wuklg"
 
 
 #Reading in the streetMap dictionary, maps street to all intersections on the street
@@ -49,20 +50,27 @@ def assignCrimeToLocation(crimeMap):
 	intersectionWeights = defaultdict(float)
 	edgeWeights = defaultdict(float)
 	numReqs = 0
+	mutex = Lock()
+	pool = ThreadPool(processes=5)
 	for latLong in crimeMap:
 		street = ""
 		print(numReqs)
 		if numReqs <= REQUEST_LIMIT:
-			street = getStreet(latLong, KEY1)
+			result = pool.apply_async(getStreet, (latLong, KEY1))
+			street = result.get() 
 		elif numReqs <= 2*REQUEST_LIMIT:
-			street = getStreet(latLong, KEY2)
+			result = pool.apply_async(getStreet, (latLong, KEY2))
+			street = result.get() 
 		elif numReqs <= 3*REQUEST_LIMIT:
-			street = getStreet(latLong, KEY3)
+			result = pool.apply_async(getStreet, (latLong, KEY3))
+			street = result.get() 
 
 		crimeWeight = crimeMap[latLong]
 		if street not in streetMap: 
 			# print("NOT IN STREET MAP {}".format(street))
+			mutex.acquire()
 			numReqs += 1
+			mutex.release()
 			continue
 		intersections = streetMap[street]
 
@@ -80,7 +88,9 @@ def assignCrimeToLocation(crimeMap):
 			# print(type(edge))
 			edge = tuple(sorted(list(edge)))
 			edgeWeights[edge] += crimeWeight
+		mutex.acquire()
 		numReqs += 1
+		mutex.release()
 	return intersectionWeights, edgeWeights
 
 intersectionWeights, edgeWeights = assignCrimeToLocation(crimeMap)
