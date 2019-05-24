@@ -105,14 +105,8 @@ def findUSCPath(startNode, endNode, getCost):
 		print(coordToIntersection[a])
 	print("Total Cost: ", ucs.totalCost)
 
-	# print(intersectionToCrimeWeight[('Broadway', 'John Street')])
-	# nmap = neighborsMap[('Broadway', 'John Street')]
-	# for n in nmap:
-	# 	inter = coordToIntersection[n]
-	# 	print("cost: ", intersectionToCrimeWeight[inter])
-	# print(ucs.actions)
-	# print(' '.join(ucs.actions))
-	# return ' '.join(ucs.actions)
+	with open('ucsPath.pickle', 'wb') as f:
+		pickle.dump(actions, f)
 
 	return ucs.actions
 

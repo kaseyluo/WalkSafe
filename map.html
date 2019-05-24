@@ -107,15 +107,22 @@ AIzaSyDcy3dfad1oDQXdzb2WF1gMW2bh9kG7Nag
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+        with open('ucsPath.pickle', 'rb') as f:
+          ucsActions = pickle.load(f)
+
+        //get long/lat from cross-street
+        l_new = open("crossStreetsToIntersections_financialDistrict.pickle", "rb")
+        intersection_to_lat_long = pickle.load(l_new)
+
         var waypts = [];
         var checkboxArray = document.getElementById('waypoints');
-        for (var i = 0; i < checkboxArray.length; i++) {
-          if (checkboxArray.options[i].selected) {
+
+        for (var i = 0; i < ucsActions.length; i++) {
             waypts.push({
-              location: checkboxArray[i].value,
+              location: intersection_to_lat_long[ucsActions[i]].value,
               stopover: false
             });
-          }
         }
 
         directionsService.route({
