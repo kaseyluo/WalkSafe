@@ -34,7 +34,7 @@ file4.close()
 
 def computeCrimeWeightV2(intersectionCoord, intersectionWeights, edgeWeights):
     if intersectionCoord not in intersectionToCrossStreets: 
-        print("in the if")
+        print("Could not find intersectionCoord in intersectionToCrossStreets: ", intersectionCoord)
         return 0 #take out LATER
     crossStreets = intersectionToCrossStreets[intersectionCoord]
     # Set of visited neighboring intersections.
@@ -42,6 +42,9 @@ def computeCrimeWeightV2(intersectionCoord, intersectionWeights, edgeWeights):
     crimeWeight = intersectionWeights[intersectionCoord]
     print("origina crime weight: ", crimeWeight)
     for neighborCoord in neighborMap[crossStreets]:
+        print("neighbor coord: ", neighborCoord)
+        #NOTE: this SAME AS LINE 75's PROBLEM
+        if neighborCoord is None: continue
         neighborCrossStreets = intersectionToCrossStreets[neighborCoord]
         if neighborCrossStreets not in visited:
             crimeWeight += computeCrimeWeightV2Helper(
@@ -60,11 +63,24 @@ def computeCrimeWeightV2Helper(currCoord, originCoord, visited, intersectionWeig
 
     edge = tuple(sorted(list((currCoord, originCoord))))
     inverseDistance = float(1) / distToOrigin
-    crimeWeight = inverseDistance * (intersectionWeights[currCoord] + edgeWeights[edge])
+    intersectionWeight = 0
+    if currCoord in intersectionWeights: intersectionWeight = intersectionWeights[currCoord]
+    edgeWeight = 0
+    if edge in edgeWeights: edgeWeight = edgeWeights[edge]
+    crimeWeight = inverseDistance * (intersectionWeight + edgeWeight)
 
-    currCrossStreets = intersectionWeightsV1[currCoord]
+    currCrossStreets = intersectionToCrossStreets[currCoord]
     visited.add(currCrossStreets)
+
     for neighborCoord in neighborMap[currCrossStreets]:
+        # IF statement is a TEMPORARy fix for a problem described below:
+        # THING TO FIX: neighborMAPS HAS CROSS STREETS MAPPING TO NEIGHBOR NODES THAT include
+        # "NONE" values.
+        # TO FIX, GO INTO NODESTOSTREET.PY AND FIX LINES 14-19.
+        # NOTE: fixing this will update the neighborMap dictionary –– because this is used 
+        # to create other dictionaries (like the original crime weight mappings), if we update
+        # neighborMap, WE HAVE TO UPDATE EVERY OTHER MAPPING THAT DEPENDS ON IT :)
+        if neighborCoord is None: continue
         neighborCrossStreets = intersectionToCrossStreets[neighborCoord]
         if neighborCrossStreets not in visited:
             crimeWeight += computeCrimeWeightV2Helper(
@@ -74,7 +90,6 @@ def computeCrimeWeightV2Helper(currCoord, originCoord, visited, intersectionWeig
                                 intersectionWeights,
                                 edgeWeights
                             )
-
     return crimeWeight
 
 # Returns a mapping between each intersection (key) and a crime weight (value)
@@ -87,12 +102,9 @@ def assignCrimeWeightToIntersection(intersectionWeights, edgeWeights):
 
     return intersectionWeightsV2
 
-for intersection, weight in intersectionToCrossStreets.items():
-    print(intersection, ": ", weight)
 
 intersectionWeightsV2 = assignCrimeWeightToIntersection(intersectionWeightsV1, edgeWeightsV1)
-# for intersection, weight in intersectionWeightsV2.items():
-#     print(intersection, ": ", weight)
+
 
 s = open("intersectionToCrimeWeightV2.pickle", "wb")
 pickle.dump(intersectionWeightsV2, s)

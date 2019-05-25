@@ -29,6 +29,9 @@ neighborsMap = pickle.load(n_new)
 s_new = open("intersectionToCrimeWeightV2.pickle", "rb")
 intersectionToCrimeWeightV2 = pickle.load(s_new)
 
+i_new = open("crossStreetsToIntersections_financialDistrict.pickle", "rb")
+intersectionToLatLog = pickle.load(i_new)
+
 
 
 class ShortestPathProblem(util.SearchProblem):
@@ -59,7 +62,7 @@ class ShortestPathProblem(util.SearchProblem):
         	results.append(t)
         return results
 
-def getCost(startNode, endNode, alpha, beta, normalize=True, useSecondaryWeights=True):
+def getCost(startNode, endNode, alpha, beta, normalize=True, useSecondaryWeights=False):
 	edge = tuple(sorted(list((startNode, endNode))))
 	crimeWeightAtIntersection = 0
 	if endNode in intersectionToCrimeWeight:
@@ -68,8 +71,13 @@ def getCost(startNode, endNode, alpha, beta, normalize=True, useSecondaryWeights
 	#cost = crime at edge, crime at endNode if any, + distance from start to end
 	# print("cimre: ", edgeToCrimeWeight[edge] + crimeWeightAtIntersection, "dist: ", distance.distance(startNode, endNode).m)
 	if normalize:
-		if not useSecondaryWeights: return alpha*(edgeToCrimeWeight[edge]/aveEdgeToCrimeWeight + crimeWeightAtIntersection/aveIntersectionWeight) + beta*(distance.distance(startNode, endNode).m/averageBlockInMeters)
+		if not useSecondaryWeights: 
+			# print("running old weights")
+			cost = alpha*(edgeToCrimeWeight[edge]/aveEdgeToCrimeWeight + crimeWeightAtIntersection/aveIntersectionWeight) + beta*(distance.distance(startNode, endNode).m/averageBlockInMeters)
+			# print(cost)
+			return cost
 		else:
+			# print("running new weights")
 			return alpha*intersectionToCrimeWeightV2[endNode]/aveIntersectionWeightV2 + beta*(distance.distance(startNode, endNode).m/averageBlockInMeters)
 	return edgeToCrimeWeight[edge] + crimeWeightAtIntersection + distance.distance(startNode, endNode).m
 
@@ -158,6 +166,9 @@ def getSafetyScore(actions):
 	if actions[len(actions) - 1] in intersectionToCrimeWeight: safety += intersectionToCrimeWeight[actions[len(actions)-1]]
 	return safety
 
+def getLatLongOfPath(actions):
+	for action in actions:
+		print(intersectionToLatLog[action])
 
 
 def getDistance(actions):
@@ -189,6 +200,7 @@ def run():
 
 	startTimeUCS = time.time()
 	actionsUCS = findUCSPath(startNode, endNode, getCost, alpha, beta)
+	print(actionsUCS)
 	endTimeUCS = time.time()
 	print("Safety Score: " , getSafetyScore(actionsUCS))
 	print("Distance Score: ", getDistance(actionsUCS))

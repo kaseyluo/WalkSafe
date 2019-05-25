@@ -20,10 +20,14 @@ def printNeighborsMaps():
 def printIntersectionToCrimeWeight():
 	s = open("intersectionToCrimeWeight.pickle", "rb")
 	mapp = pickle.load(s)
+	v2 = open("intersectionToCrimeWeightV2.pickle", "rb")
+	mappV2 = pickle.load(v2)
 	for a in mapp:
-		print(a, ": ", mapp[a])
+		print("old weight: ", a, ": ", mapp[a])
+		print("new weight: ", a, ": ", mappV2[a])
+		print(" ")
 
-# printCrossStreetsToCoord()
+printCrossStreetsToCoord()
 # printNeighborsMaps()
 # printEdgeToCrimeWeight()
-printIntersectionToCrimeWeight()
+# printIntersectionToCrimeWeight()
