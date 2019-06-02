@@ -127,6 +127,7 @@ def baselineGreedy(startNode, endNode, neighborsMap, alpha=1, beta=1): #TODO, wr
 	for p in path:
 		print(coordToIntersection[p])
 	print("Rel Cost: ", cost)
+	print(path)
 	return path
 
 def findUCSPath(startNode, endNode, getCost, alpha=1, beta=1):
