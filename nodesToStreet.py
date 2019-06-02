@@ -5,6 +5,7 @@ import pickle
 import sys
 
 #NEED THIS FROM DANIEL'S CODE
+#TO DO, CHANGE THIS TO crossStreetsToIntersection.pickle
 f_new = open("crossStreetsToIntersections_financialDistrict.pickle", "rb")
 intersectionToCoord = pickle.load(f_new)
 
