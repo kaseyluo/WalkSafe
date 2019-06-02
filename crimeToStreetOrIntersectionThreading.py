@@ -8,6 +8,7 @@ import geocoder
 import threading
 import json
 import sys
+import time
 
 #IMPORT STREET: INTERSECTIONS MAP HERE
 #streetIntersections = 
@@ -51,8 +52,10 @@ def assignCrimeToLocation(crimeMap):
 	edgeWeights = defaultdict(float)
 	numReqs = 0
 	mutex = Lock()
-	pool = ThreadPool(processes=5)
+	pool = ThreadPool(processes=3)
+	startTime = time.time()
 	for latLong in crimeMap:
+		if time.time() - startTime > 30: break
 		street = ""
 		print(numReqs)
 		if numReqs <= REQUEST_LIMIT:

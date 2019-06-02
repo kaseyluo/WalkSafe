@@ -1,5 +1,6 @@
 from collections import defaultdict
 from geopy import distance
+from checkAccuracyOfNeighbors import checkAccuracyOfNeighbors
 import pickle
 import sys
 
@@ -64,11 +65,12 @@ def constructNeighborsMap(intersectionToCoord, streetMap):
 				# print(" ")
 			#find two closest nodes on this street
 			node1, node2 = findTwoClosest(streetMap[street], coord)
+			node1, node2 = checkAccuracyOfNeighbors(coord, node1, node2)
 			# if (node1 or node2 == None): print("foudn none, but adding to neighbormap nonetheless")
 
 			#add these neighbors to map
-			neighborMap[crossStreet].add(node1)
-			neighborMap[crossStreet].add(node2)
+			if node1 not None: neighborMap[crossStreet].add(node1)
+			if node2 not None: neighborMap[crossStreet].add(node2)
 
 	return neighborMap
 

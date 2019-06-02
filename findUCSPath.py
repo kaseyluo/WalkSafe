@@ -2,6 +2,7 @@ import util
 import sys
 import pickle
 import time
+import json
 from nodesToStreet import intersectionToCoord
 from geopy import distance
 from computeAverages import aveIntersectionWeight, aveEdgeToCrimeWeight, aveIntersectionWeightV2
@@ -177,6 +178,10 @@ def getDistance(actions):
 		totalDistance += distance.distance(actions[i], actions[i+1]).m
 	return totalDistance
 
+def outputToJSON(actions, pathName):
+	with open(pathName, 'w') as outfile:
+		json.dump(actions, outfile)
+
 def run():
 	startIntersection = input("Start intersection? usage: (\'street name\', \'street name\') =   ")
 	startIntersection = tuple(sorted(eval(startIntersection)))
@@ -201,6 +206,7 @@ def run():
 	startTimeUCS = time.time()
 	actionsUCS = findUCSPath(startNode, endNode, getCost, alpha, beta)
 	print(actionsUCS)
+	outputToJSON(actionsUCS, "outputPathUCS.json")
 	endTimeUCS = time.time()
 	print("Safety Score: " , getSafetyScore(actionsUCS))
 	print("Distance Score: ", getDistance(actionsUCS))
@@ -215,6 +221,7 @@ def run():
 
 	startTimeGreedy = time.time()
 	actionsGreedy = baselineGreedy(startNode, endNode, neighborsMap, alpha, beta)
+	outputToJSON(actionsUCS, "outputPathGreedy.json")
 	endTimeGreedy = time.time()
 	print("Safety Score: " , getSafetyScore(actionsGreedy))
 	print("Distance Score: ", getDistance(actionsGreedy))
