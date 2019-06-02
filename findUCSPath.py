@@ -3,7 +3,7 @@ import sys
 import pickle
 import time
 import json
-from nodesToStreet import intersectionToCoord
+from nodesToStreet import crossStreetsToIntersection
 from geopy import distance
 from computeAverages import aveIntersectionWeight, aveEdgeToCrimeWeight, aveIntersectionWeightV2
 
@@ -19,18 +19,20 @@ i_new = open("intersectionToCrimeWeight.pickle", "rb")
 intersectionToCrimeWeight = pickle.load(i_new)
 
 #get coord to crossStreet map
-c_new = open("intersectionToCrossStreets_financialDistrict.pickle", "rb")
+c_new = open("intersectionToCrossStreets.pickle", "rb")
 coordToIntersection = pickle.load(c_new)
 
 #get neighbors map
 n_new = open("neighborMap.pickle", "rb")
 neighborsMap = pickle.load(n_new)
+# for n in neighborsMap:
+# 	print(n, ": ", neighborsMap[n])
 
 #get neighbors map
 s_new = open("intersectionToCrimeWeightV2.pickle", "rb")
 intersectionToCrimeWeightV2 = pickle.load(s_new)
 
-i_new = open("crossStreetsToIntersections_financialDistrict.pickle", "rb")
+i_new = open("crossStreetsToIntersection.pickle", "rb")
 intersectionToLatLog = pickle.load(i_new)
 
 
@@ -54,7 +56,8 @@ class ShortestPathProblem(util.SearchProblem):
     def succAndCost(self, state):
         results = []
         currNode = state
-        intersection = coordToIntersection[currNode] #returns a latitude longitude
+        intersection = coordToIntersection[tuple(currNode)] #returns a latitude longitude
+        # print(intersection)
         neighbors = self.neighborsMap[intersection] #a set of neighbor nodes to the current node
         for n in neighbors:
         	if n == None: continue #TODO, FIX THIS
@@ -130,25 +133,25 @@ def findUCSPath(startNode, endNode, getCost, alpha=1, beta=1):
 	#get neighborNodes map
 	ucs = util.UniformCostSearch(verbose=0)
 	ucs.solve(ShortestPathProblem(startNode, endNode, getCost, neighborsMap, alpha, beta))
-	actions = ucs.actions
+	actions = [startNode] + ucs.actions
 	print("Safest path, UCS: ")
-	print(coordToIntersection[startNode])
+	# print(coordToIntersection[startNode])
 	for a in actions:
 		print(coordToIntersection[a])
 	print("Rel Cost: ", ucs.totalCost)
-	return ucs.actions
+	return actions
 
 def findAStarPath(startNode, endNode, getCost, alpha=1, beta=1):
 	#get neighborNodes map
 	ucs = util.AStarSearch(verbose=0)
 	ucs.solve(ShortestPathProblem(startNode, endNode, getCost, neighborsMap, alpha, beta), endNode, beta)
-	actions = ucs.actions
+	actions = [startNode] + ucs.actions
 	print("Safest, shortest path, A*: ")
-	print(coordToIntersection[startNode])
+	# print(coordToIntersection[startNode])
 	for a in actions:
 		print(coordToIntersection[a])
 	print("Rel Cost: ", ucs.totalCost)
-	return ucs.actions
+	return actions
 
 #Start intersection? usage: ('street name', 'street name') =   ('Edgar Street', 'Trinity Place')
 #End intersection? usage: ('street name', 'street name') =   ('Rector Street', 'Washington Street')
@@ -185,20 +188,20 @@ def outputToJSON(actions, pathName):
 def run():
 	startIntersection = input("Start intersection? usage: (\'street name\', \'street name\') =   ")
 	startIntersection = tuple(sorted(eval(startIntersection)))
-	while startIntersection not in intersectionToCoord:
+	while startIntersection not in crossStreetsToIntersection:
 		print("Sorry, we don't have that intersection in our database, try again!")
 		startIntersection = input("Start intersection? usage: (\'street name\', \'street name\') =   ")
 		startIntersection = tuple(sorted(eval(startIntersection)))
 	
 	endIntersection = input("End intersection? usage: (\'street name\', \'street name\') =   ") 
 	endIntersection   = tuple(sorted(eval(endIntersection)))
-	while endIntersection not in intersectionToCoord:
+	while endIntersection not in crossStreetsToIntersection:
 		print("Sorry, we don't have that intersection in our database, try again!")
 		endIntersection = input("End intersection? usage: (\'street name\', \'street name\') =   ") 
 		endIntersection   = tuple(sorted(eval(endIntersection)))
 
-	startNode = tuple(intersectionToCoord[startIntersection])
-	endNode = tuple(intersectionToCoord[endIntersection])
+	startNode = tuple(crossStreetsToIntersection[startIntersection])
+	endNode = tuple(crossStreetsToIntersection[endIntersection])
 
 	alpha = float(input("Safety weight? "))
 	beta = float(input("Distance weight? "))

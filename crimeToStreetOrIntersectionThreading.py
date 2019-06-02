@@ -18,9 +18,9 @@ DIST_TO_INTERSECTION = 5
 
 #Variables for using the mapBox API
 REQUEST_LIMIT = 30000
-KEY1 = "pk.eyJ1IjoiZG9tY2xraiIsImEiOiJjanZ6eHl1d24wNWI1NDNrc2VhbnlwMmZqIn0.jcTRih4pVQfdJe0Nk2dXng"
-KEY2 = "pk.eyJ1IjoiYXNkZmpsa2oiLCJhIjoiY2p2enkwNjBtMDVlMjQ5bGtram13YTZvbCJ9.UpRITNCLTaG3OyqF9D_6pQ"
-KEY3 = "pk.eyJ1IjoibGFrc2pkZmxraiIsImEiOiJjanZ6eTE2OWwwNWN0NDlwZzd4aW5kNXVwIn0.XlB6igH6svRjyYt92wuklg"
+KEY1 = "pk.eyJ1IjoibWljYWxpc2FiYWRib2kiLCJhIjoiY2p3ZW9vajdwMTN5YjQ5bnVpMGpoaTJrcCJ9.LOwN7SdJ1z-MHIaG6EB0Pg"
+KEY2 = "pk.eyJ1IjoiYmxha3NqbGtqIiwiYSI6ImNqd2VvcGg2ZTB4N2I0NXMycXNvMWU4MGgifQ.H4pmpD9ZcTj5DclDbbg9NA"
+KEY3 = "pk.eyJ1IjoiYXNka2ZqZmxrcyIsImEiOiJjandlb3FmdnYweGhxNDBzMjc4MWlrZTJkIn0.WaHwFejhqUp6H5qRSYSNpw"
 
 
 #Reading in the streetMap dictionary, maps street to all intersections on the street
@@ -53,9 +53,7 @@ def assignCrimeToLocation(crimeMap):
 	numReqs = 0
 	mutex = Lock()
 	pool = ThreadPool(processes=3)
-	startTime = time.time()
 	for latLong in crimeMap:
-		if time.time() - startTime > 30: break
 		street = ""
 		print(numReqs)
 		if numReqs <= REQUEST_LIMIT:
