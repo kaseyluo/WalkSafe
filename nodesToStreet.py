@@ -3,104 +3,87 @@ from geopy import distance
 from checkAccuracyOfNeighbors import checkAccuracyOfNeighbors
 import pickle
 import sys
+from checkAccuracyOfNeighbors import checkAccuracyOfNeighbors
 
+<<<<<<< HEAD
 #NEED THIS FROM DANIEL'S CODE
 #TO DO, CHANGE THIS TO crossStreetsToIntersection.pickle
-f_new = open("crossStreetsToIntersections_financialDistrict.pickle", "rb")
-intersectionToCoord = pickle.load(f_new)
+# f_new = open("crossStreetsToIntersections_financialDistrict.pickle", "rb")
+# intersectionToCoord = pickle.load(f_new)
+# =======
+f = open("crossStreetsToIntersection.pickle", "rb")
+crossStreetsToIntersection = pickle.load(f)
+# >>>>>>> 6f13f334cdb45bf1dbee88e8e35525ea49fafbaa
 
-def constructStreetMap(intersectionToCoord):
-	# a map of "street name": set of all intersections on that street -- {(lat, long), (lat, long), ...}
-	streetMap = defaultdict(set)
-	for crossStreet, coord in intersectionToCoord.items():
-		# TO DO ITERATE THROUGH THE CROSS STREETS
-		# for street 
-		st1 = crossStreet[0]
-		st2 = crossStreet[1]
-		streetMap[st1].add(tuple(coord))
-		streetMap[st2].add(tuple(coord))
-		# print(crossStreet)
-		# print(coord)
-		# print(" ")
+# Constructs a map between each street to the set of all intersection
+# coordinates on that street -- ''{(lat, long), (lat, long), ...}
+def constructStreetMap(crossStreetsToIntersection):
+	streetMap = {}
+	for crossStreet, coord in crossStreetsToIntersection.items():
+		for street in crossStreet:
+			# Adds intersection coordinate to street's set of intersections.
+			currentSet = streetMap.get(street, set([]))
+			currentSet.add(coord)
+			streetMap[street] = currentSet
 
 	return streetMap
 
-def findTwoClosest(setOfNodes, currNode): #set of nodes on a street, latLong of the currNode 
-	# if (len(setOfNodes) == 0): print("SET IS EMPTY")
+# Finds the two nodes in setOfNodes that are closest (in distance) to currNode.
+# --- setOfNodes is the set of nodes along a street.
+def findTwoClosest(setOfNodes, currNode):
 	minimum = sys.maxsize
-	node1 = None
 	nextMin = sys.maxsize
+	node1 = None
 	node2 = None
-	currNode = tuple(currNode)
 	for coord in setOfNodes:
-		# print("FIND TWO CLOSEST")
-		# print(coord)
-		# print(currNode)
-		# print(" ")
-		# if coord == currNode: print("FOUND MATCHING")
-		if coord != currNode: 
+		if coord != currNode:
 			distFromCurrToCoord = distance.distance(currNode, coord).m
-			if distFromCurrToCoord < minimum: 
+			if distFromCurrToCoord < minimum:
+				# Bumps down the 1st closest node to 2nd closet.
 				nextMin = minimum
 				node2 = node1
+				# Sets the new 1st closest node.
 				minimum = distFromCurrToCoord
 				node1 = coord
 			elif distFromCurrToCoord < nextMin:
+				# Sets the new 2nd closest node.
 				nextMin = distFromCurrToCoord
 				node2 = coord
-	# print(node1, node2)
 	return node1, node2
 
-
-def constructNeighborsMap(intersectionToCoord, streetMap):
-	neighborMap = defaultdict(set)
-	for crossStreet, coord in intersectionToCoord.items():
+# Constructs a map between each intersection's cross streets to the set of all
+# neighboring intersection nodes (coordinates).
+def constructNeighborsMap(crossStreetsToIntersection, streetMap):
+	neighborMap = {}
+	for crossStreet, coord in crossStreetsToIntersection.items():
 		for street in crossStreet:
-			# print(street)
-			# print(streetMap[street])
-			# print("CurrNode: ", coord)
-			# print(" ")
-			# if len(streetMap[street]) == 0:
-				# print("Street {} was not found in streetMap".format(street))
-				# print("Street {} is taken from the list {} from intersectionToCoord".format(street, crossStreet))
-				# print(" ")
-			#find two closest nodes on this street
+			# Finds the two nodes on this street that are closest to the
+			# intersection's coordinate --- these are our neighbors along this
+			# street.
 			node1, node2 = findTwoClosest(streetMap[street], coord)
 			node1, node2 = checkAccuracyOfNeighbors(coord, node1, node2)
-			# if (node1 or node2 == None): print("foudn none, but adding to neighbormap nonetheless")
+# <<<<<<< HEAD
+# 			# if (node1 or node2 == None): print("foudn none, but adding to neighbormap nonetheless")
 
-			#add these neighbors to map
-			if node1 not None: neighborMap[crossStreet].add(node1)
-			if node2 not None: neighborMap[crossStreet].add(node2)
+# 			#add these neighbors to map
+# 			if node1 not None: neighborMap[crossStreet].add(node1)
+# 			if node2 not None: neighborMap[crossStreet].add(node2)
+# =======
+# >>>>>>> 6f13f334cdb45bf1dbee88e8e35525ea49fafbaa
 
+			# Adds these neighbors to our map (for this intersection's cross streets).
+			currentSet = neighborMap.get(crossStreet, set([]))
+			if node1 is not None: currentSet.add(node1)
+			if node2 is not None: currentSet.add(node2)
+			neighborMap[crossStreet] = currentSet
 	return neighborMap
 
 
-#UNCOMMENT WHEN YOU WANT TO REMAKE THE STREET MAP AND NEIGHBOR MAP
-streetMap = constructStreetMap(intersectionToCoord)
-neighborMap = constructNeighborsMap(intersectionToCoord, streetMap)
-# s = open("streetMap.pickle", "wb")
-# pickle.dump(streetMap, s)
+streetMap = constructStreetMap(crossStreetsToIntersection)
+neighborMap = constructNeighborsMap(crossStreetsToIntersection, streetMap)
 
-# n = open("neighborMap.pickle", "wb")
-# pickle.dump(neighborMap, n)
+fnew1 = open("streetMap.pickle", "wb")
+pickle.dump(streetMap, fnew1)
 
-
-
-#CODE TO PRINT OUT MAPS
-# for s in streetMap:
-# 	print(s, ": ", streetMap[s])
-# for n in neighborMap:
-# 	print(n, ": ", neighborMap[n])
-
-
-
-
-
-
-
-
-
-
-
-
+fnew2 = open("neighborMap.pickle", "wb")
+pickle.dump(neighborMap, fnew2)
