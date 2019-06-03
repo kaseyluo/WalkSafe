@@ -4,8 +4,8 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions Service (Complex)</title>
-    <!-- <script type="text/javascript" src="outputPathUCS.json"></script> -->
-    <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1TC3HMjBX0G_ObfCt7uDjFupoVzE&hl=en" width="640" height="480"></iframe> -->
+    <script type="text/javascript" src="outputPathUCS.json"></script>
+   <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1QE4nu4vCPsQA2xsGWWp-c9GWb0byspsY" width="640" height="480"></iframe> -->
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -66,7 +66,11 @@
           var georssLayer = new google.maps.KmlLayer({
             url: 'https://raw.githubusercontent.com/kaseyluo/WalkSafe/ComputeFixedAndFinalMaps/Manhattan_Safety_Map.kml'
           });
-          georssLayer.setMap(map);
+          // var georssLayer = new google.maps.KmlLayer({
+          //   url: 'https://raw.githubusercontent.com/kaseyluo/WalkSafe/master/Crime%20Map%20NYC.kml'
+          // });
+          
+          // georssLayer.setMap(map);
 
 
 
@@ -144,8 +148,8 @@
 
 
 
-
-        // var myRouteJSON = JSON.parse(outputPathUCS);
+        console.log(outputPathUCS[0])
+        var myRouteJSON = JSON.parse(outputPathUCS);
 
         var routeLatLng = []
         for (var i = 1; i < myRoute.length; i++) {
