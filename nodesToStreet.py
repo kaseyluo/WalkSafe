@@ -77,7 +77,8 @@ neighborMap = constructNeighborsMap(intersectionToCoord, streetMap)
 s = open("streetMap.pickle", "wb")
 pickle.dump(streetMap, s)
 
-n = open("neighborMap.pickle", "wb")
+# n = open("neighborMap.pickle", "wb")
+n = open("testNeighborMap.pickle", "wb")
 pickle.dump(neighborMap, n)
 
 

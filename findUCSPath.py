@@ -1,6 +1,7 @@
 import util
 import sys
 import pickle
+import json
 from nodesToStreet import intersectionToCoord
 from geopy import distance
 
@@ -18,8 +19,10 @@ c_new = open("intersectionToCrossStreets_financialDistrict.pickle", "rb")
 coordToIntersection = pickle.load(c_new)
 
 #get neighbors map
-n_new = open("neighborMap.pickle", "rb")
+# n_new = open("neighborMap.pickle", "rb")
+n_new= open("testNeighborMap.pickle", "rb")
 neighborsMap = pickle.load(n_new)
+print(len(neighborsMap))
 
 
 
