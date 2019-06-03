@@ -4,7 +4,8 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions Service (Complex)</title>
-    <script type="text/javascript" src="outputPathUCS.json"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="outputPathUCS.json"></script> -->
    <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1QE4nu4vCPsQA2xsGWWp-c9GWb0byspsY" width="640" height="480"></iframe> -->
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -147,23 +148,26 @@
        var myRoute = [[40.812202, -73.94225145], [40.8133941, -73.94510885], [40.81402285, -73.9446577], [40.814641949999995, -73.9442], [40.81530135, -73.9437166], [40.815979350000006, -73.94321545], [40.817175, -73.946055], [40.8178, -73.945598], [40.818424, -73.945141], [40.819047, -73.944687], [40.819673, -73.944231], [40.8202938, -73.9437782], [40.820917, -73.943322], [40.821542, -73.942865], [40.822164, -73.942411], [40.822628, -73.943506], [40.8232579, -73.9429237], [40.8239304, -73.9424115], [40.824555, -73.941956], [40.825171, -73.941503], [40.825793, -73.941049], [40.826414, -73.940595], [40.8260002, -73.9396033]]
 
 
+        $.getJSON("outputPathUCS.json", function(json) {
+          console.log(json); 
+        
 
-        console.log(outputPathUCS[0])
-        var myRouteJSON = JSON.parse(outputPathUCS);
 
         var routeLatLng = []
-        for (var i = 1; i < myRoute.length; i++) {
+        for (var i = 1; i < json.length; i++) {
+
+
           routeLatLng.push({
-            location: new google.maps.LatLng(myRoute[i][0], myRoute[i][1]),
+            location: new google.maps.LatLng(json[i][0], json[i][1]),
             stopover: true
           });
           //routeLatLng.push(new google.maps.LatLng(myRoute[i][0], myRoute[i][1]));
         }
 
-        console.log("routeLatLng " + routeLatLng)
+           console.log("routeLatLng " + routeLatLng)
           directionsService.route({
-          origin: new google.maps.LatLng(myRoute[0][0], myRoute[0][1]),
-          destination: new google.maps.LatLng(myRoute[myRoute.length - 1][0], myRoute[myRoute.length - 1][1]),
+          origin: new google.maps.LatLng(json[0][0], json[0][1]),
+          destination: new google.maps.LatLng(json[json.length - 1][0], json[json.length - 1][1]),
           waypoints: routeLatLng,
           travelMode: 'WALKING'
           }, function(response, status) {
@@ -178,6 +182,39 @@
             window.alert('Directions request failed due to ' + status);
           }
         });
+
+          });
+
+        // console.log(outputPathUCS[0])
+        // var myRouteJSON = JSON.parse(outputPathUCS);
+
+        // var routeLatLng = []
+        // for (var i = 1; i < myRoute.length; i++) {
+        //   routeLatLng.push({
+        //     location: new google.maps.LatLng(myRoute[i][0], myRoute[i][1]),
+        //     stopover: true
+        //   });
+        //   //routeLatLng.push(new google.maps.LatLng(myRoute[i][0], myRoute[i][1]));
+        // }
+
+        // console.log("routeLatLng " + routeLatLng)
+        //   directionsService.route({
+        //   origin: new google.maps.LatLng(myRoute[0][0], myRoute[0][1]),
+        //   destination: new google.maps.LatLng(myRoute[myRoute.length - 1][0], myRoute[myRoute.length - 1][1]),
+        //   waypoints: routeLatLng,
+        //   travelMode: 'WALKING'
+        //   }, function(response, status) {
+        //   // Route the directions and pass the response to a function to create
+        //   // markers for each step.
+        //   if (status === 'OK') {
+        //     document.getElementById('warnings-panel').innerHTML =
+        //         '<b>' + response.routes[0].warnings + '</b>';
+        //     directionsDisplay.setDirections(response);
+        //     showSteps(response, markerArray, stepDisplay, map);
+        //   } else {
+        //     window.alert('Directions request failed due to ' + status);
+        //   }
+        // });
         
 
         

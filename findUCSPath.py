@@ -3,7 +3,9 @@ import sys
 import pickle
 import time
 import json
+import math
 from nodesToStreet import crossStreetsToIntersection
+from random import sample
 from geopy import distance
 from computeAverages import aveIntersectionWeight, aveEdgeToCrimeWeight, aveIntersectionWeightV2
 
@@ -183,8 +185,17 @@ def getDistance(actions):
 	return totalDistance
 
 def outputToJSON(actions, pathName):
+	newActions = actions
+	if len(actions) > 23:
+		newActions = [actions[0]]
+		increment = math.ceil((len(actions) - 2)/21.0)
+		i = 1
+		while i < len(actions) - 1:
+			newActions.append(actions[i])
+			i += increment
+		newActions += [actions[len(actions)-1]]
 	with open(pathName, 'w') as outfile:
-		json.dump(actions, outfile)
+		json.dump(newActions, outfile)
 
 def run():
 	startIntersection = input("Start intersection? usage: (\'street name\', \'street name\') =   ")
