@@ -78,15 +78,14 @@ def constructNeighborsMap(crossStreetsToIntersection, streetMap):
 			neighborMap[crossStreet] = currentSet
 	return neighborMap
 
-#UNCOMMENT WHEN NEED TO REGENERATE PICKLES
-# streetMap = constructStreetMap(crossStreetsToIntersection)
-# neighborMap = constructNeighborsMap(crossStreetsToIntersection, streetMap)
+# UNCOMMENT WHEN ONE NEEDS TO REGENERATE MAPPINGS.
+'''
+streetMap = constructStreetMap(crossStreetsToIntersection)
+neighborMap = constructNeighborsMap(crossStreetsToIntersection, streetMap)
 
-# for n, neighbors in neighborMap.items():
-# 	print(n, ": ", neighbors)
+fnew1 = open("streetMap.pickle", "wb")
+pickle.dump(streetMap, fnew1)
 
-# fnew1 = open("streetMap.pickle", "wb")
-# pickle.dump(streetMap, fnew1)
-
-# fnew2 = open("neighborMap.pickle", "wb")
-# pickle.dump(neighborMap, fnew2)
+fnew2 = open("neighborMap.pickle", "wb")
+pickle.dump(neighborMap, fnew2)
+'''

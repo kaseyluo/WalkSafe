@@ -22,7 +22,7 @@ file2.close()
 
 # Opens the mapping from intersection coordinate (key) to intersection cross
 # streets (value).
-file3 = open("intersectionToCrossStreets_financialDistrict.pickle", "rb")
+file3 = open("intersectionToCrossStreets.pickle", "rb")
 intersectionToCrossStreets = pickle.load(file3)
 file3.close()
 
@@ -33,7 +33,7 @@ neighborMap = pickle.load(file4)
 file4.close()
 
 def computeCrimeWeightV2(intersectionCoord, intersectionWeights, edgeWeights):
-    if intersectionCoord not in intersectionToCrossStreets: 
+    if intersectionCoord not in intersectionToCrossStreets:
         print("Could not find intersectionCoord in intersectionToCrossStreets: ", intersectionCoord)
         return 0 #take out LATER
     crossStreets = intersectionToCrossStreets[intersectionCoord]
@@ -77,7 +77,7 @@ def computeCrimeWeightV2Helper(currCoord, originCoord, visited, intersectionWeig
         # THING TO FIX: neighborMAPS HAS CROSS STREETS MAPPING TO NEIGHBOR NODES THAT include
         # "NONE" values.
         # TO FIX, GO INTO NODESTOSTREET.PY AND FIX LINES 14-19.
-        # NOTE: fixing this will update the neighborMap dictionary –– because this is used 
+        # NOTE: fixing this will update the neighborMap dictionary -- because this is used
         # to create other dictionaries (like the original crime weight mappings), if we update
         # neighborMap, WE HAVE TO UPDATE EVERY OTHER MAPPING THAT DEPENDS ON IT :)
         if neighborCoord is None: continue
@@ -98,6 +98,7 @@ def assignCrimeWeightToIntersection(intersectionWeights, edgeWeights):
     intersectionWeightsV2 = defaultdict(float)
     for intersection, weightV1 in intersectionWeights.items():
         weightV2 = computeCrimeWeightV2(intersection, intersectionWeights, edgeWeights)
+        print(" ")
         intersectionWeightsV2[intersection] = weightV2
 
     return intersectionWeightsV2
